@@ -40,7 +40,7 @@ export function Hero() {
             </div>
           </a>
           <a
-            href="/cv-dhyan-thakkar-2026-04-29.pdf"
+            href="/cv-dhyan-thakkar-2026-09-22.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"

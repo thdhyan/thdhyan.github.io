@@ -2,6 +2,48 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 
 const PROJECTS = [
   {
+    id: 'booster-k1',
+    date: 'Aug–Sep 2026',
+    title: 'Multi-Robot Humanoid Fleet & Locomotion — Booster K1',
+    desc: 'ROS 2 Jazzy workspace for the 22-DoF Booster K1 humanoid. Namespaced multi-robot fleet verified across three simulation backends (Gazebo Harmonic, MuJoCo, Isaac Sim) with SDK-style endpoints.',
+    tags: ['ROS 2 Jazzy', 'Isaac Sim', 'Isaac Lab', 'Gazebo', 'MuJoCo', 'RSL-RL'],
+  },
+  {
+    id: 'groot-vqa',
+    date: 'Jul–Aug 2026',
+    title: 'GR00T Intent Evaluation via VQA',
+    desc: 'VQA experiment runners to evaluate GR00T model intent predictions on video clips, including clip-to-task matching and a scripted approved-model download pipeline.',
+    tags: ['PyTorch', 'Isaac-GR00T', 'VQA'],
+  },
+  {
+    id: 'cosmos3',
+    date: 'Jul 2026',
+    title: 'Cosmos3 Video Data Generation',
+    desc: 'Batch video-to-video generation and captioning pipeline (5-second segment captions + event detection via Cosmos3 Reasoner) with segmentation, style/scene variation generation, and Google Drive sync.',
+    tags: ['Python', 'Cosmos3', 'ffmpeg', 'rclone'],
+  },
+  {
+    id: 'so101-rl',
+    date: '2026',
+    title: 'SO-101 Manipulation RL Environments',
+    desc: 'Single- and dual-arm SO-101 environments (6/12 joints, 5–6 cameras) spanning seven manipulation tasks (pick-lift, pick-and-place, push-T, ramp/bridge pushes, dual-arm cylinder grasp/reach), with a backend-agnostic RL training layer (skrl / rsl_rl) plus teleop data collection.',
+    tags: ['MuJoCo', 'Isaac Sim', 'skrl', 'RSL-RL'],
+  },
+  {
+    id: 'thesis-lidar',
+    date: '2026',
+    title: 'Thesis — MID360 LiDAR Simulation',
+    desc: 'Sim work for Livox MID360 LiDAR-based perception: simulated LiDAR capture and 3D detection pipeline setup (LivoxDetection / OpenPCDet) for the thesis platform.',
+    tags: ['Isaac Sim', 'Livox MID360', 'OpenPCDet'],
+  },
+  {
+    id: 'thesis-llm-reid',
+    date: '2026',
+    title: 'Thesis — LLM as Planner with ReID & Human Tracking',
+    desc: 'LLM-based planner plus ReID and tracking for human action and character identification using VoxelNeX and LiDAR-HMR.',
+    tags: ['Python', 'VoxelNeX', 'LiDAR-HMR', 'LLMs'],
+  },
+  {
     id: 'humanoid',
     date: 'Oct 2025',
     title: 'Human-to-Robot Motion Retargeting',
