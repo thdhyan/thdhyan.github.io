@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Dhyan Thakkar</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Dhyan Thakkar">
+		<meta name="keywords" content="Dhyan Thakkar, Robotics, Humanoids, Embodied AI, University of Minnesota">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<meta name="description" property="og:description" content="Dhyan Thakkar — Robotics Researcher &amp; Engineer specializing in Embodied AI, Human-Robot Interaction, and real-time kinematic retargeting for humanoids and quadrupeds. MS in Robotics, University of Minnesota.">
+	</head>
+	<body>
+
+	<!-- Sticky Navigation Toggle Button -->
+	<button id="scroll-nav-toggle" class="scroll-nav-toggle">☰</button>
+
+	<!-- Navigation Menu -->
+	<div id="scroll-nav-menu" class="scroll-nav-menu">
+		<ul>
+			<li><a href="#experience">Experience</a></li>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#publications">Publications</a></li>
+			<li><a href="#skills">Skills</a></li>
+		</ul>
+	</div>
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="divided">
+
+		<!-- Hero -->
+		<section id="first" class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+			<div class="content">
+				<h1>Dhyan Thakkar</h1>
+				<p class="major">Robotics Researcher &amp; Engineer — Embodied AI, Humanoids &amp; HRI. MS in Robotics at the University of Minnesota.</p>
+				<ul class="actions">
+					<li><a href="#projects" class="button primary fit">Projects</a></li>
+					<li><a href="#experience" class="button primary fit">Experience</a></li>
+					<li><a href="cv-dhyan-thakkar-2026-09-22.pdf" class="button primary fit">CV</a></li>
+				</ul>
+			</div>
+			<div class="image">
+				<img src="images/hero/hero-k1-fleet.png" alt="Booster K1 humanoid fleet simulation" fetchpriority="high" decoding="async" />
+			</div>
+		</section>
+
+		<!-- About -->
+		<section id="second" class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<p>I'm a Robotics Researcher &amp; Engineer specializing in <strong>Embodied AI</strong>, <strong>Human-Robot Interaction</strong>, and <strong>real-time kinematic retargeting</strong> for humanoids and quadrupeds. I build high-throughput (30 FPS) vision-to-motion pipelines and online system identification for dynamic platforms — most recently a namespaced multi-robot Booster K1 humanoid fleet across Gazebo, MuJoCo, and Isaac Sim.</p>
+				<p>I'm completing my <strong>MS in Robotics</strong> at the University of Minnesota (Dec 2026), and I'm an outreach volunteer &amp; summer instructor at the Minnesota Robotics Institute.</p>
+
+				<!-- Social Links -->
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/thdhyan" class="icon brands style2 fa-linkedin-in" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/thdhyan" class="icon brands style2 fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:thakk100@umn.edu" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured: Booster K1 -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2>Multi-Robot Humanoid Fleet — Booster K1</h2>
+				<p>ROS 2 Jazzy workspace for the 22-DoF Booster K1 humanoid: namespaced multi-robot fleet verified across three simulation backends (Gazebo Harmonic, MuJoCo, Isaac Sim) with SDK-style endpoints. Trained a blind, contact-free velocity locomotion policy (5,000 iterations, RSL-RL) in Isaac Lab 3.0 with teacher–student distillation, plus a MuJoCo RoboCup 3v3 demo (6 K1s) and a ZED 2i stereo replica in Isaac Sim.</p>
+				<ul class="actions">
+					<li><a href="#projects" class="button">All projects</a></li>
+				</ul>
+			</div>
+			<div class="image">
+				<img src="images/projects/k1-robocup-kick.png" alt="Booster K1 RoboCup 3v3 kick in Isaac Sim" loading="lazy" decoding="async" />
+			</div>
+		</section>
+
+		<!-- Featured: SO-101 -->
+		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2>SO-101 Manipulation RL Environments</h2>
+				<p>Single- and dual-arm SO-101 environments (6/12 joints, 5–6 cameras) spanning seven manipulation tasks — pick-lift, pick-and-place, push-T, ramp/bridge pushes, dual-arm cylinder grasp/reach — with a backend-agnostic RL training layer (skrl / rsl_rl) plus teleop data collection.</p>
+			</div>
+			<div class="image">
+				<img src="images/projects/so101-dual-arm.png" alt="Dual-arm SO-101 manipulation environment overview" loading="lazy" decoding="async" />
+			</div>
+		</section>
+
+		<!-- Featured: Thesis LiDAR -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2>Thesis — LiDAR Perception &amp; LLM Planning</h2>
+				<p>Simulated Livox MID360 LiDAR capture and a 3D detection pipeline (LivoxDetection / OpenPCDet) for the thesis platform, plus an LLM-based planner with person re-identification and multi-object tracking for human action understanding — using VoxelNeX for LiDAR detection and LiDAR-HMR for human mesh recovery.</p>
+			</div>
+			<div class="image">
+				<img src="images/projects/thesis-lidar-detect.png" alt="PointPillars LiDAR detection visualization" loading="lazy" decoding="async" />
+			</div>
+		</section>
+
+		<!-- Experience -->
+		<section id="experience" class="wrapper style1 align-center">
+			<div class="inner">
+				<h2>Experience</h2>
+
+				<header class="align-center">
+					<p><em>Research, engineering, and outreach</em></p>
+				</header>
+
+				<div class="index style1 medium">
+					<section>
+						<header>
+							<h3>Outreach Volunteer &amp; Summer Instructor — Minnesota Robotics Institute</h3>
+							<p>September 2024 – Present · Minneapolis, MN</p>
+						</header>
+						<p>Led 4+ K-12 outreach events engaging 300+ students in hands-on robotics demos and STEM workshops. Lead instructor for the UMN Robotics Summer Camp (50–70 students), teaching advanced robotics concepts and capstone projects.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Robotics Intern — Robotics Gallery, Science City</h3>
+							<p>January 2024 – June 2024 · Ahmedabad, India</p>
+						</header>
+						<p>Realtime Visual-Inertial Odometry on multicopters (5% less vertical deviation). LLM-based navigation on Unitree Go2 via SLAM with 4D LiDAR and camera sensing. GSLAM-based AMR systems for 200 lb+ warehouse payloads.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Inhouse Intern — Nirma University (E&amp;C Department)</h3>
+							<p>May 2023 – July 2023 · Ahmedabad, India</p>
+						</header>
+						<p>Deployed YOLOv8 with 30 FPS inference at 89% accuracy for vehicle classification and 67% precision in speed determination, trained on a custom 33,000+ image dataset.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Research Assistant — Nirma University</h3>
+							<p>September 2021 – December 2022 · Ahmedabad, India</p>
+						</header>
+						<p>Streamlined remote development and containerization across HPC systems and clusters. Designed a Bi-LSTM model to forecast cloud compute usage and improve resource scaling efficiency.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Student Representative — IEEE RAS Whole Body Control Technical Committee</h3>
+							<p>Present · Remote</p>
+						</header>
+						<p>Represent student interests within the committee and engage with researchers at the frontier of whole-body motion planning and loco-manipulation.</p>
+					</section>
+				</div>
+
+				<h2 style="margin-top: 3rem;">Education</h2>
+				<div class="index style1 medium">
+					<section>
+						<header>
+							<h3>MS in Robotics — University of Minnesota, Twin Cities</h3>
+							<p>August 2024 – December 2026 · Minneapolis, MN</p>
+						</header>
+					</section>
+					<section>
+						<header>
+							<h3>Bachelor's in Electronics &amp; Communications — Nirma University</h3>
+							<p>September 2020 – May 2024 · Ahmedabad, India</p>
+						</header>
+					</section>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section id="projects" class="wrapper style1 align-center">
+			<div class="inner">
+				<h2>Projects</h2>
+
+				<header class="align-center">
+					<p><em>Selected work — full list on the CV</em></p>
+				</header>
+
+				<div class="index style1 medium">
+					<section>
+						<header>
+							<h3>GR00T Intent Evaluation via VQA</h3>
+							<p>Jul 2026 – Aug 2026 · PyTorch, NVIDIA Isaac-GR00T</p>
+						</header>
+						<p>VQA experiment runners to evaluate GR00T model intent predictions on video clips, including clip-to-task matching and a scripted approved-model download pipeline.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Cosmos3 Video Data Generation</h3>
+							<p>Jul 2026 · Python, Cosmos3, ffmpeg, rclone</p>
+						</header>
+						<p>Batch video-to-video generation and captioning pipeline (5-second segment captions + event detection via Cosmos3 Reasoner) with segmentation, style/scene variation, and Google Drive sync.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Real-time Human-to-Robot Motion Retargeting (GVHMR + GMR)</h3>
+							<p>Oct 2025 · Isaac Sim, MuJoCo, ROS</p>
+						</header>
+						<p>Low-latency pipeline recovering 3D human sequences from monocular RGB, with Gaussian Mixture Regression + TWIST motion mapping at stable 30 FPS on 6 GB VRAM, benchmarked against AMASS.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Online System Identification for Quadrupedal Pushing/Pulling</h3>
+							<p>Dec 2025 · ANYmal, Unitree Go1</p>
+						</header>
+						<p>Adaptive online estimation of object properties (mass, CoM, moments of inertia) during manipulation — 89% success rate with mean angular error under 10°.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Visual Tokens–Based Navigation</h3>
+							<p>Apr 2025 · Python, VLMs, Hugging Face, Habitat</p>
+						</header>
+						<p>QWEN2.5VL 8B navigation with scene graphs; fine-tuned Qwen2.5 &amp; InternVL3 for visual scene grounding (78.64% ObjectNav, 62.35% OVMM); +27% landmark pose estimation via camera-intrinsic tokens.</p>
+					</section>
+					<section>
+						<header>
+							<h3>Object-Centric RL UAV Control</h3>
+							<p>Nov 2024 · Isaac Sim, PX4, PPO</p>
+						</header>
+						<p>Reduced VIO jumps by 80% with RL-based UAV control using RGB-D, EKF pose estimation, and segmentation-based detection; PPO agent for hovering and orbiting in Isaac Sim/Lab.</p>
+					</section>
+					<section>
+						<header>
+							<h3>LLM Navigation with LiDAR on Unitree Go2</h3>
+							<p>Apr 2024 · Python, OpenCV, Unitree SDK2</p>
+						</header>
+						<p>Conversational agent with 15+ retrievable goal landmark tokens navigating 1,700+ sq. ft. dynamic indoor environments at sub-782ms latency on a custom audio pipeline.</p>
+					</section>
+					<section>
+						<header>
+							<h3>GSLAM-Based AMR Logistics</h3>
+							<p>Jan – Jun 2024 · ROS2 Nav2, G-SLAM, 4D LiDAR</p>
+						</header>
+						<p>Autonomous mobile robots transporting 200 lb+ payloads in warehouse environments; LLM-based navigation via 4D LiDAR and camera sensing; VIO on multicopters with 5% less vertical deviation.</p>
+					</section>
+				</div>
+			</div>
+		</section>
+
+		<!-- Publications -->
+		<section id="publications" class="wrapper style1 align-center">
+			<div class="inner">
+				<h2>Publications</h2>
+				<div class="index style1 medium">
+					<section>
+						<header>
+							<h3>CR2: Contact-Rich Quadrupedal Pushing</h3>
+							<p>ICRA 2026 Workshop on Contact-Rich Manipulation · 2026</p>
+						</header>
+					</section>
+					<section>
+						<header>
+							<h3>MVMS: RNN based Pro-Active Resource Scaling in Cloud Environment</h3>
+							<p>April 2023</p>
+						</header>
+					</section>
+					<section>
+						<header>
+							<h3>Imperceptible Malware: Bypassing Modern AV Engines</h3>
+							<p>May 2023</p>
+						</header>
+					</section>
+					<section>
+						<header>
+							<h3>Anticipated Network Surveillance</h3>
+							<p>July 2022</p>
+						</header>
+					</section>
+				</div>
+			</div>
+		</section>
+
+		<!-- Skills -->
+		<section id="skills" class="wrapper style1 align-center">
+			<div class="inner">
+				<h2>Technical Skills</h2>
+				<div class="index style1 medium">
+					<section>
+						<header><h3>Languages</h3></header>
+						<p>Python, C/C++, CUDA, Shell, MATLAB, Docker</p>
+					</section>
+					<section>
+						<header><h3>Simulation &amp; Physics</h3></header>
+						<p>NVIDIA Isaac Sim/Lab, MuJoCo, Gazebo, Habitat Sim, AWS RoboMaker</p>
+					</section>
+					<section>
+						<header><h3>Robotics Frameworks</h3></header>
+						<p>ROS 2 (Jazzy, Humble), ROS (Noetic), Nav2, Unitree SDK2, PX4, MAVROS</p>
+					</section>
+					<section>
+						<header><h3>Machine Learning</h3></header>
+						<p>PyTorch, Hugging Face, RLLib, RSL-RL, skrl, DeepSpeed, MMCV, YOLOv8, Bi-LSTM</p>
+					</section>
+					<section>
+						<header><h3>Hardware &amp; Systems</h3></header>
+						<p>Jetson Nano, Raspberry Pi, Unitree Go1/Go2/G1, Booster K1, SO-101, ANYmal, Agate HPC Cluster</p>
+					</section>
+					<section>
+						<header><h3>Computer Vision</h3></header>
+						<p>RGB-D sensing, LiDAR 3D detection (Livox MID360, VoxelNeX, OpenPCDet), EKF pose estimation, vSLAM, G-SLAM, Intel RealSense</p>
+					</section>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="wrapper style1 align-center">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/thdhyan" class="icon brands style2 fa-linkedin-in" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/thdhyan" class="icon brands style2 fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:thakk100@umn.edu" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<p>&copy; 2026 Dhyan Thakkar · <a href="https://html5up.net" target="_blank" rel="noopener noreferrer">Story by HTML5 UP</a></p>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script defer src="assets/js/jquery.min.js"></script>
+		<script defer src="assets/js/jquery.scrollex.min.js"></script>
+		<script defer src="assets/js/jquery.scrolly.min.js"></script>
+		<script defer src="assets/js/browser.min.js"></script>
+		<script defer src="assets/js/breakpoints.min.js"></script>
+		<script defer src="assets/js/util.js"></script>
+		<script defer src="assets/js/main.js"></script>
+		<script defer src="assets/js/navigation.js"></script>
+
+	</body>
+</html>
