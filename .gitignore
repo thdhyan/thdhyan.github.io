@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Large model assets
+# models-raw/ holds the full 600MB+ raw collection (gitignored).
+# public/models/ ships only the compressed GLBs the site actually loads.
+/models-raw/
+/src/assets/*.glb
+/src/assets/ChatGPT*.png
+
+# Claude / agent internals (private)
+/memory/
+/.claude/
+/.agents/
+/skills-lock.json
+
+# Helper scripts
+*.py

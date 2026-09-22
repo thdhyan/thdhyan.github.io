@@ -1,0 +1,6 @@
+id,title,type,description,tech
+1,Humanoid Manipulation,humanoid,Enabling humanoid robots to understand natural language instructions.,ROS 2;C++;Python
+2,Quadruped Locomotion,quadruped,Learning robust locomotion policies using reinforcement learning.,ROS 2;Python;RL
+3,Industrial Sorting,arm,High-precision robotic arm for industrial automation.,ROS 2;MoveIt 2
+4,Aerial Mapping,drone,Autonomous aerial platform for mapping and inspection.,Python;PX4
+5,Warehouse Logistics,amr,Autonomous mobile robot for material transport.,ROS 2;Nav2;Lidar
