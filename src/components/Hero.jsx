@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { ArrowRight } from '@phosphor-icons/react';
 import { Scene } from './Scene';
+import { LAYOUT } from '../layout';
 
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
@@ -74,7 +75,7 @@ export function Hero() {
         <div className="hero-stage-sticky">
           <div className="hero-stage-frame">
             <Canvas
-              camera={{ position: [0, 1.0, 11.5], fov: 28 }}
+              camera={{ position: LAYOUT.camera.pos, fov: LAYOUT.camera.fov }}
               dpr={[1, 1.5]}
               gl={{
                 alpha: true,

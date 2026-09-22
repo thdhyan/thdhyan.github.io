@@ -127,7 +127,7 @@ function finishRobot(robot) {
 }
 
 const cache = new Map();
-if (import.meta.env.DEV) window.__fleet = cache; // dev: inspect loaded robots
+if (import.meta.env.DEV) { window.__fleet = cache; window.__THREE = THREE; } // dev: inspect loaded robots
 
 export function loadFleetRobot(id) {
   if (cache.has(id)) return cache.get(id);

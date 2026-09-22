@@ -27,7 +27,7 @@ const report = await page.evaluate(async () => {
     go1: { FR_calf_joint: -0.9, FL_thigh_joint: 0.45, RR_calf_joint: -0.9, RL_calf_joint: -0.9 },
     go2: { FR_calf_joint: -0.9, FL_calf_joint: -0.9, RR_thigh_joint: 0.45 },
     spot: { arm_joint3: 1.76, arm_joint1: 1.258407, arm_gripper: -0.836263 },
-    k1: { ARight_Shoulder_Pitch: -2.056, Left_Shoulder_Roll: -1.34, Head_pitch: -0.089 },
+    k1: { ARight_Shoulder_Pitch: -2.056, Left_Shoulder_Roll: -1.3, Head_pitch: 0.091 },
   };
   const out = {};
   for (const [id, p] of window.__fleet) {

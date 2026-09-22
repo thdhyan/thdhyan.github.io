@@ -15,8 +15,9 @@ const ok = (cond, msg) => { console.log(cond ? 'OK  ' : 'FAIL', msg); if (!cond)
 // 1. select go1 via its chip
 await page.locator('button', { hasText: /^go1$/ }).click();
 
-// 2. joint sliders panel rendered
-const sliderCount = await page.locator('input[type="range"]').count();
+// 2. joint sliders panel rendered (scoped: joint rows have span[title]; cam sliders don't)
+const JOINT_RANGE = 'span[title] ~ input[type="range"]';
+const sliderCount = await page.locator(JOINT_RANGE).count();
 ok(sliderCount >= 8, `joint sliders rendered (${sliderCount})`);
 
 // 3. pick FR_calf_joint, drive its slider to the midpoint of its limits
@@ -39,7 +40,7 @@ const idx = await (async () => {
   return names.indexOf(target.name);
 })();
 ok(idx >= 0 && idx < sliderCount, `slider index for ${target.name} = ${idx}`);
-await page.locator('input[type="range"]').nth(idx).evaluate((el, v) => {
+await page.locator(JOINT_RANGE).nth(idx).evaluate((el, v) => {
   const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
   setter.call(el, String(v));
   el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -87,6 +88,23 @@ const afterReset = await page.evaluate(async () => {
 ok(afterReset.bad.length === 0,
   `Reset pose set all joints to clamped zero${afterReset.bad.length ? ' — off: ' + afterReset.bad.join(', ') : ''}`);
 ok(Math.abs(afterReset.min_y) < 1e-3, `grounded after reset (min.y=${afterReset.min_y})`);
+
+// 6. hero camera sliders -> live editor camera -> draft export payload
+const camBefore = await page.evaluate(() => window.__heroCam?.position.x ?? null);
+await page.locator('span:text-is("pos X") ~ input[type="range"]').evaluate((el, v) => {
+  const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+  setter.call(el, String(v));
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+}, 3.2);
+await page.waitForTimeout(300);
+const camAfter = await page.evaluate(() => window.__heroCam?.position.x ?? null);
+ok(camAfter !== null && Math.abs(camAfter - 3.2) < 1e-6,
+  `hero cam slider moved camera.x ${camBefore} -> ${camAfter} (want 3.2)`);
+
+await page.locator('button', { hasText: /^Save draft$/ }).evaluate((el) => el.click());
+const draft = await page.evaluate(() => JSON.parse(localStorage.getItem('hero-layout-draft-v2') || 'null'));
+ok(draft?.camera?.pos?.[0] === 3.2 && typeof draft?.camera?.fov === 'number',
+  `draft carries camera (pos=[${draft?.camera?.pos}], fov=${draft?.camera?.fov})`);
 
 console.log(fails.length === 0 ? 'EDITOR CHECKS PASSED' : `${fails.length} FAILED`);
 await browser.close().catch(() => {});

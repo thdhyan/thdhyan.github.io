@@ -57,6 +57,13 @@ function CameraView({ view }) {
     controls.target.set(0, 1, 0);
     controls.update();
   }, [view, controls, camera]);
+  // dev hook for tools/editorcheck.mjs + tools/rendercards.mjs
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      window.__heroCam = camera;
+      window.__heroControls = controls;
+    }
+  }, [view, controls, camera]);
   return null;
 }
 
@@ -98,7 +105,11 @@ export default function Editor() {
   const [selId, setSelId] = useState(null);
   const [selObj, setSelObj] = useState(null); // Object3D of the selected entity
   const [mode, setMode] = useState('translate'); // translate | rotate
-  const [view, setView] = useState({ pos: [0, 3, 14], fov: 40 });
+  const [view, setView] = useState(() => {
+    // start framed exactly like the hero (layout/draft camera) when known
+    const l = loadInitial();
+    return l.camera ? { pos: [...l.camera.pos], fov: l.camera.fov } : { pos: [0, 3, 14], fov: 40 };
+  });
   const objs = useRef({});
   const reg = (id, o) => { objs.current[id] = o; };
   useEffect(() => {
@@ -138,7 +149,10 @@ export default function Editor() {
     return { ...e, [key]: next };
   });
 
-  const layoutOut = useMemo(() => fromEntities(ents, orig), [ents, orig]);
+  const layoutOut = useMemo(
+    () => ({ ...fromEntities(ents, orig), camera: { pos: [...view.pos], fov: view.fov } }),
+    [ents, orig, view],
+  );
 
   const saveDraft = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(layoutOut));
   const toJSON = () => {
@@ -160,6 +174,7 @@ export default function Editor() {
     localStorage.removeItem(STORAGE_KEY);
     setOrig(clone(LAYOUT));
     setEnts(toEntities(LAYOUT));
+    setView(LAYOUT.camera ? { pos: [...LAYOUT.camera.pos], fov: LAYOUT.camera.fov } : { pos: [0, 3, 14], fov: 40 });
     deselect();
   };
 
@@ -172,6 +187,8 @@ export default function Editor() {
         <ambientLight intensity={1.1} color="#F8EFEF" />
         <directionalLight position={[5, 8, 5]} intensity={1.5} color="#F8EFEF" />
         <directionalLight position={[-3, 6, 4]} intensity={0.8} color="#C9C2FF" />
+        {/* back/rim light — matches Scene.jsx so editor previews like the hero */}
+        <directionalLight position={[-2, 5, -7]} intensity={1.3} color="#C9C2FF" />
         <pointLight position={[-4, 2, 3]} intensity={1.1} color="#6B59D0" distance={18} />
         <gridHelper args={[40, 40, '#2a2a2a', '#1c1c1c']} position={[0, 0.001, 0]} />
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
@@ -199,7 +216,7 @@ export default function Editor() {
       </Canvas>
 
       {/* side panel */}
-      <div style={{
+      <div data-editor-panel style={{
         position: 'absolute', top: 16, right: 16, width: 280, maxHeight: '90vh',
         overflowY: 'auto', background: 'rgba(16,16,16,0.92)', border: '1px solid #2c2c2c',
         borderRadius: 12, padding: 16, color: '#F8EFEF', fontFamily: 'Inter, sans-serif', fontSize: 13,
@@ -216,6 +233,33 @@ export default function Editor() {
         <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
           <button onClick={() => setView({ pos: [0, 1, 11.5], fov: 28 })} style={chip(view.fov === 28)}>Hero view</button>
           <button onClick={() => setView({ pos: [0, 3, 14], fov: 40 })} style={chip(view.fov === 40)}>Overview</button>
+        </div>
+
+        <Label>Hero camera (exported as LAYOUT.camera)</Label>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
+          {[0, 1, 2].map((i) => (
+            <CamSlider
+              key={i}
+              label={`pos ${'XYZ'[i]}`}
+              min={[-8, -2, -6][i]}
+              max={[8, 8, 18][i]}
+              step={0.1}
+              value={Number(view.pos[i].toFixed(1))}
+              onChange={(v) => setView((prev) => {
+                const pos = [...prev.pos];
+                pos[i] = v;
+                return { ...prev, pos };
+              })}
+            />
+          ))}
+          <CamSlider
+            label="fov"
+            min={10}
+            max={60}
+            step={1}
+            value={view.fov}
+            onChange={(v) => setView((prev) => ({ ...prev, fov: v }))}
+          />
         </div>
 
         {selEnt && (
@@ -319,6 +363,17 @@ const btn = {
 };
 const Label = ({ children }) => (
   <div style={{ color: '#999', fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.5, margin: '8px 0 4px' }}>{children}</div>
+);
+const CamSlider = ({ label, min, max, step, value, onChange }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+    <span style={{ color: '#777', fontSize: 11, flex: '0 0 46px' }}>{label}</span>
+    <input
+      type="range" min={min} max={max} step={step} value={value}
+      onChange={(e) => onChange(Number(e.target.value))}
+      style={{ flex: 1 }}
+    />
+    <span style={{ color: '#aaa', fontSize: 11, width: 40, textAlign: 'right' }}>{value}</span>
+  </div>
 );
 const Num = ({ label, value, onChange, step }) => (
   <label style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 4 }}>

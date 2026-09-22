@@ -88,6 +88,8 @@ export function Scene({ animate = true }) {
       <directionalLight position={[5, 8, 5]}   intensity={1.5} color="#F8EFEF" castShadow />
       <directionalLight position={[-3, 6, 4]}  intensity={0.8} color="#C9C2FF" />
       <directionalLight position={[0, 3, 10]}  intensity={0.6} color="#F8EFEF" />
+      {/* back/rim light — separates robots from the dark backdrop */}
+      <directionalLight position={[-2, 5, -7]} intensity={1.3} color="#C9C2FF" />
       <pointLight position={[-4, 2, 3]}  intensity={1.1} color="#6B59D0" distance={18} />
       <pointLight position={[4, -1, 3]}  intensity={0.8} color="#6D694D" distance={14} />
       <pointLight position={[0, 5, 5]}   intensity={0.6} color="#6B59D0" distance={14} />
