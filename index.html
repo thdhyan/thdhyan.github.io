@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<meta name="description" property="og:description" content="Dhyan Thakkar — Robotics Researcher &amp; Engineer specializing in Embodied AI, Human-Robot Interaction, and real-time kinematic retargeting for humanoids and quadrupeds. MS in Robotics, University of Minnesota.">
 	</head>
@@ -46,7 +47,7 @@
 				</ul>
 			</div>
 			<div class="image">
-				<img src="images/hero/hero-k1-fleet.png" alt="Booster K1 humanoid fleet simulation" fetchpriority="high" decoding="async" />
+				<img src="images/hero/hero-main.png" alt="Booster K1 humanoid in Isaac Sim" fetchpriority="high" decoding="async" />
 			</div>
 		</section>
 
@@ -67,86 +68,45 @@
 			</div>
 		</section>
 
-		<!-- Featured: Booster K1 -->
-		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-			<div class="content">
-				<h2>Multi-Robot Humanoid Fleet — Booster K1</h2>
-				<p>ROS 2 Jazzy workspace for the 22-DoF Booster K1 humanoid: namespaced multi-robot fleet verified across three simulation backends (Gazebo Harmonic, MuJoCo, Isaac Sim) with SDK-style endpoints. Trained a blind, contact-free velocity locomotion policy (5,000 iterations, RSL-RL) in Isaac Lab 3.0 with teacher–student distillation, plus a MuJoCo RoboCup 3v3 demo (6 K1s) and a ZED 2i stereo replica in Isaac Sim.</p>
-				<ul class="actions">
-					<li><a href="#projects" class="button">All projects</a></li>
-				</ul>
-			</div>
-			<div class="image">
-				<img src="images/projects/k1-robocup-kick.png" alt="Booster K1 RoboCup 3v3 kick in Isaac Sim" loading="lazy" decoding="async" />
-			</div>
-		</section>
-
-		<!-- Featured: SO-101 -->
-		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-			<div class="content">
-				<h2>SO-101 Manipulation RL Environments</h2>
-				<p>Single- and dual-arm SO-101 environments (6/12 joints, 5–6 cameras) spanning seven manipulation tasks — pick-lift, pick-and-place, push-T, ramp/bridge pushes, dual-arm cylinder grasp/reach — with a backend-agnostic RL training layer (skrl / rsl_rl) plus teleop data collection.</p>
-			</div>
-			<div class="image">
-				<img src="images/projects/so101-dual-arm.png" alt="Dual-arm SO-101 manipulation environment overview" loading="lazy" decoding="async" />
-			</div>
-		</section>
-
-		<!-- Featured: Thesis LiDAR -->
-		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-			<div class="content">
-				<h2>Thesis — LiDAR Perception &amp; LLM Planning</h2>
-				<p>Simulated Livox MID360 LiDAR capture and a 3D detection pipeline (LivoxDetection / OpenPCDet) for the thesis platform, plus an LLM-based planner with person re-identification and multi-object tracking for human action understanding — using VoxelNeX for LiDAR detection and LiDAR-HMR for human mesh recovery.</p>
-			</div>
-			<div class="image">
-				<img src="images/projects/thesis-lidar-detect.png" alt="PointPillars LiDAR detection visualization" loading="lazy" decoding="async" />
-			</div>
-		</section>
-
 		<!-- Experience -->
 		<section id="experience" class="wrapper style1 align-center">
 			<div class="inner">
 				<h2>Experience</h2>
-
-				<header class="align-center">
-					<p><em>Research, engineering, and outreach</em></p>
-				</header>
-
 				<div class="index style1 medium">
 					<section>
 						<header>
 							<h3>Outreach Volunteer &amp; Summer Instructor — Minnesota Robotics Institute</h3>
-							<p>September 2024 – Present · Minneapolis, MN</p>
+							<p>Sep 2024 – Present · Minneapolis, MN</p>
 						</header>
-						<p>Led 4+ K-12 outreach events engaging 300+ students in hands-on robotics demos and STEM workshops. Lead instructor for the UMN Robotics Summer Camp (50–70 students), teaching advanced robotics concepts and capstone projects.</p>
+						<p>Lead instructor, UMN Robotics Summer Camp (50–70 students); 4+ K-12 outreach events engaging 300+ students.</p>
 					</section>
 					<section>
 						<header>
 							<h3>Robotics Intern — Robotics Gallery, Science City</h3>
-							<p>January 2024 – June 2024 · Ahmedabad, India</p>
+							<p>Jan 2024 – Jun 2024 · Ahmedabad, India</p>
 						</header>
-						<p>Realtime Visual-Inertial Odometry on multicopters (5% less vertical deviation). LLM-based navigation on Unitree Go2 via SLAM with 4D LiDAR and camera sensing. GSLAM-based AMR systems for 200 lb+ warehouse payloads.</p>
+						<p>Realtime VIO on multicopters, LLM-based navigation on Unitree Go2, GSLAM AMR systems for 200 lb+ payloads.</p>
 					</section>
 					<section>
 						<header>
 							<h3>Inhouse Intern — Nirma University (E&amp;C Department)</h3>
-							<p>May 2023 – July 2023 · Ahmedabad, India</p>
+							<p>May 2023 – Jul 2023 · Ahmedabad, India</p>
 						</header>
-						<p>Deployed YOLOv8 with 30 FPS inference at 89% accuracy for vehicle classification and 67% precision in speed determination, trained on a custom 33,000+ image dataset.</p>
+						<p>YOLOv8 at 30 FPS / 89% accuracy for vehicle classification, trained on a 33,000+ image custom dataset.</p>
 					</section>
 					<section>
 						<header>
 							<h3>Research Assistant — Nirma University</h3>
-							<p>September 2021 – December 2022 · Ahmedabad, India</p>
+							<p>Sep 2021 – Dec 2022 · Ahmedabad, India</p>
 						</header>
-						<p>Streamlined remote development and containerization across HPC systems and clusters. Designed a Bi-LSTM model to forecast cloud compute usage and improve resource scaling efficiency.</p>
+						<p>HPC containerization and remote dev workflows; Bi-LSTM cloud-compute forecasting for resource scaling.</p>
 					</section>
 					<section>
 						<header>
 							<h3>Student Representative — IEEE RAS Whole Body Control Technical Committee</h3>
 							<p>Present · Remote</p>
 						</header>
-						<p>Represent student interests within the committee and engage with researchers at the frontier of whole-body motion planning and loco-manipulation.</p>
+						<p>Student interests at the frontier of whole-body motion planning and loco-manipulation.</p>
 					</section>
 				</div>
 
@@ -155,13 +115,13 @@
 					<section>
 						<header>
 							<h3>MS in Robotics — University of Minnesota, Twin Cities</h3>
-							<p>August 2024 – December 2026 · Minneapolis, MN</p>
+							<p>Aug 2024 – Dec 2026 · Minneapolis, MN</p>
 						</header>
 					</section>
 					<section>
 						<header>
 							<h3>Bachelor's in Electronics &amp; Communications — Nirma University</h3>
-							<p>September 2020 – May 2024 · Ahmedabad, India</p>
+							<p>Sep 2020 – May 2024 · Ahmedabad, India</p>
 						</header>
 					</section>
 				</div>
@@ -173,67 +133,135 @@
 			<div class="inner">
 				<h2>Projects</h2>
 
-				<header class="align-center">
-					<p><em>Selected work — full list on the CV</em></p>
-				</header>
+				<div class="grid">
+					<article class="card">
+						<img class="card-img" src="images/projects/k1-robocup-kick.png" alt="Booster K1 RoboCup 3v3 demo in Isaac Sim" loading="lazy" decoding="async" />
+						<div class="card-body">
+							<h3>Multi-Robot Humanoid Fleet — Booster K1</h3>
+							<div class="card-meta">Aug – Sep 2026</div>
+							<p>ROS 2 Jazzy workspace for the 22-DoF K1: namespaced fleet across Gazebo, MuJoCo, and Isaac Sim with SDK-style endpoints. Blind velocity locomotion policy (RSL-RL, teacher–student distillation), RoboCup 3v3 demo, ZED 2i stereo replica, SLURM/HPC training.</p>
+							<div class="card-tags"><span>ROS 2 Jazzy</span><span>Isaac Sim</span><span>Isaac Lab</span><span>RSL-RL</span></div>
+						</div>
+					</article>
 
-				<div class="index style1 medium">
-					<section>
-						<header>
+					<article class="card">
+						<div class="card-body">
+							<h3>Unitree G1 Warehouse Simulation — Isaac Sim 6</h3>
+							<div class="card-meta">2026</div>
+							<p>Isaac Sim 6.0 extension (thdhyan.sim.g1_warehouse): 29-DoF Unitree G1 with Livox Mid-360 LiDAR pattern, RealSense D435 RGB-D, and whole-body-control policy hot-swap in warehouse scenes.</p>
+							<div class="card-tags"><span>Isaac Sim 6</span><span>Unitree G1</span><span>Livox Mid-360</span><span>WBC</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
+							<h3>Unitree G1 Perception &amp; Control Stack — g1_ws</h3>
+							<div class="card-meta">2025 – 2026</div>
+							<p>ROS 2 workspace for the G1 thesis platform: YOLO11-pose estimation node publishing annotated images and bounding boxes through custom thesis_interfaces messages, plus retargeting and twist-control packages.</p>
+							<div class="card-tags"><span>ROS 2</span><span>YOLO11-Pose</span><span>Unitree G1</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<img class="card-img" src="images/projects/so101-dual-arm.png" alt="Dual-arm SO-101 manipulation environment overview" loading="lazy" decoding="async" />
+						<div class="card-body">
+							<h3>SO-101 Manipulation RL Environments</h3>
+							<div class="card-meta">2026</div>
+							<p>Single- and dual-arm environments (6/12 joints, 5–6 cameras) across seven manipulation tasks, with a backend-agnostic RL training layer (skrl / rsl_rl) plus teleop data collection.</p>
+							<div class="card-tags"><span>MuJoCo</span><span>Isaac Sim</span><span>skrl</span><span>RSL-RL</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<img class="card-img" src="images/projects/thesis-lidar-detect.png" alt="PointPillars LiDAR detection visualization" loading="lazy" decoding="async" />
+						<div class="card-body">
+							<h3>Thesis — MID360 LiDAR Simulation</h3>
+							<div class="card-meta">2026</div>
+							<p>Simulated Livox MID360 capture and a 3D detection pipeline (LivoxDetection / OpenPCDet) for the thesis platform.</p>
+							<div class="card-tags"><span>Isaac Sim</span><span>Livox MID360</span><span>OpenPCDet</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
+							<h3>Thesis — LLM as Planner with ReID &amp; Human Tracking</h3>
+							<div class="card-meta">2026</div>
+							<p>LLM-based planner with person re-identification and multi-object tracking for human action understanding and character identification, using VoxelNeX for LiDAR detection and LiDAR-HMR for human mesh recovery.</p>
+							<div class="card-tags"><span>VoxelNeX</span><span>LiDAR-HMR</span><span>LLMs</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>GR00T Intent Evaluation via VQA</h3>
-							<p>Jul 2026 – Aug 2026 · PyTorch, NVIDIA Isaac-GR00T</p>
-						</header>
-						<p>VQA experiment runners to evaluate GR00T model intent predictions on video clips, including clip-to-task matching and a scripted approved-model download pipeline.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Jul – Aug 2026</div>
+							<p>VQA experiment runners to evaluate GR00T model intent predictions on video clips, including clip-to-task matching and a scripted approved-model download pipeline.</p>
+							<div class="card-tags"><span>PyTorch</span><span>Isaac-GR00T</span><span>VQA</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>Cosmos3 Video Data Generation</h3>
-							<p>Jul 2026 · Python, Cosmos3, ffmpeg, rclone</p>
-						</header>
-						<p>Batch video-to-video generation and captioning pipeline (5-second segment captions + event detection via Cosmos3 Reasoner) with segmentation, style/scene variation, and Google Drive sync.</p>
-					</section>
-					<section>
-						<header>
-							<h3>Real-time Human-to-Robot Motion Retargeting (GVHMR + GMR)</h3>
-							<p>Oct 2025 · Isaac Sim, MuJoCo, ROS</p>
-						</header>
-						<p>Low-latency pipeline recovering 3D human sequences from monocular RGB, with Gaussian Mixture Regression + TWIST motion mapping at stable 30 FPS on 6 GB VRAM, benchmarked against AMASS.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Jul 2026</div>
+							<p>Batch video-to-video generation and captioning pipeline (5-second segment captions + event detection via Cosmos3 Reasoner) with segmentation, style/scene variation, and Google Drive sync.</p>
+							<div class="card-tags"><span>Cosmos3</span><span>ffmpeg</span><span>rclone</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
+							<h3>Real-time Human-to-Robot Motion Retargeting</h3>
+							<div class="card-meta">Oct 2025</div>
+							<p>GVHMR + GMR pipeline recovering 3D human sequences from monocular RGB; TWIST motion mapping at stable 30 FPS on 6 GB VRAM, benchmarked against AMASS.</p>
+							<div class="card-tags"><span>Isaac Sim</span><span>MuJoCo</span><span>ROS</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>Online System Identification for Quadrupedal Pushing/Pulling</h3>
-							<p>Dec 2025 · ANYmal, Unitree Go1</p>
-						</header>
-						<p>Adaptive online estimation of object properties (mass, CoM, moments of inertia) during manipulation — 89% success rate with mean angular error under 10°.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Dec 2025</div>
+							<p>Online estimation of object properties (mass, CoM, moments of inertia) during manipulation — 89% success rate with mean angular error under 10°.</p>
+							<div class="card-tags"><span>ANYmal</span><span>Unitree Go1</span><span>Full-body Control</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>Visual Tokens–Based Navigation</h3>
-							<p>Apr 2025 · Python, VLMs, Hugging Face, Habitat</p>
-						</header>
-						<p>QWEN2.5VL 8B navigation with scene graphs; fine-tuned Qwen2.5 &amp; InternVL3 for visual scene grounding (78.64% ObjectNav, 62.35% OVMM); +27% landmark pose estimation via camera-intrinsic tokens.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Apr 2025</div>
+							<p>QWEN2.5VL 8B navigation with scene graphs; fine-tuned Qwen2.5 &amp; InternVL3 for scene grounding (78.64% ObjectNav, 62.35% OVMM); +27% landmark pose estimation via camera-intrinsic tokens.</p>
+							<div class="card-tags"><span>VLMs</span><span>Hugging Face</span><span>Habitat</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>Object-Centric RL UAV Control</h3>
-							<p>Nov 2024 · Isaac Sim, PX4, PPO</p>
-						</header>
-						<p>Reduced VIO jumps by 80% with RL-based UAV control using RGB-D, EKF pose estimation, and segmentation-based detection; PPO agent for hovering and orbiting in Isaac Sim/Lab.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Nov 2024</div>
+							<p>Reduced VIO jumps by 80% with RL-based UAV control using RGB-D, EKF pose estimation, and segmentation-based detection; PPO agent for hovering and orbiting in Isaac Sim/Lab.</p>
+							<div class="card-tags"><span>Isaac Sim</span><span>PX4</span><span>PPO</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>LLM Navigation with LiDAR on Unitree Go2</h3>
-							<p>Apr 2024 · Python, OpenCV, Unitree SDK2</p>
-						</header>
-						<p>Conversational agent with 15+ retrievable goal landmark tokens navigating 1,700+ sq. ft. dynamic indoor environments at sub-782ms latency on a custom audio pipeline.</p>
-					</section>
-					<section>
-						<header>
+							<div class="card-meta">Apr 2024</div>
+							<p>Conversational agent with 15+ retrievable goal landmark tokens navigating 1,700+ sq. ft. dynamic indoor environments at sub-782ms latency on a custom audio pipeline.</p>
+							<div class="card-tags"><span>OpenCV</span><span>Unitree SDK2</span><span>Edge LLM</span></div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-body">
 							<h3>GSLAM-Based AMR Logistics</h3>
-							<p>Jan – Jun 2024 · ROS2 Nav2, G-SLAM, 4D LiDAR</p>
-						</header>
-						<p>Autonomous mobile robots transporting 200 lb+ payloads in warehouse environments; LLM-based navigation via 4D LiDAR and camera sensing; VIO on multicopters with 5% less vertical deviation.</p>
-					</section>
+							<div class="card-meta">Jan – Jun 2024</div>
+							<p>Autonomous mobile robots transporting 200 lb+ payloads in warehouse environments; LLM-based navigation via 4D LiDAR and camera sensing; VIO on multicopters with 5% less vertical deviation.</p>
+							<div class="card-tags"><span>ROS2 Nav2</span><span>G-SLAM</span><span>4D LiDAR</span></div>
+						</div>
+					</article>
 				</div>
 			</div>
 		</section>
@@ -242,31 +270,23 @@
 		<section id="publications" class="wrapper style1 align-center">
 			<div class="inner">
 				<h2>Publications</h2>
-				<div class="index style1 medium">
-					<section>
-						<header>
-							<h3>CR2: Contact-Rich Quadrupedal Pushing</h3>
-							<p>ICRA 2026 Workshop on Contact-Rich Manipulation · 2026</p>
-						</header>
-					</section>
-					<section>
-						<header>
-							<h3>MVMS: RNN based Pro-Active Resource Scaling in Cloud Environment</h3>
-							<p>April 2023</p>
-						</header>
-					</section>
-					<section>
-						<header>
-							<h3>Imperceptible Malware: Bypassing Modern AV Engines</h3>
-							<p>May 2023</p>
-						</header>
-					</section>
-					<section>
-						<header>
-							<h3>Anticipated Network Surveillance</h3>
-							<p>July 2022</p>
-						</header>
-					</section>
+				<div class="pub-grid">
+					<div class="pub-item">
+						<h3>CR2: Contact-Rich Quadrupedal Pushing</h3>
+						<p>ICRA 2026 Workshop on Contact-Rich Manipulation</p>
+					</div>
+					<div class="pub-item">
+						<h3>MVMS: RNN based Pro-Active Resource Scaling in Cloud Environment</h3>
+						<p>April 2023</p>
+					</div>
+					<div class="pub-item">
+						<h3>Imperceptible Malware: Bypassing Modern AV Engines</h3>
+						<p>May 2023</p>
+					</div>
+					<div class="pub-item">
+						<h3>Anticipated Network Surveillance</h3>
+						<p>July 2022</p>
+					</div>
 				</div>
 			</div>
 		</section>
