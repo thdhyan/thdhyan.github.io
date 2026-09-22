@@ -30,12 +30,10 @@ export function Navbar() {
           ))}
         </div>
         <a
-          href="/cv-dhyan-thakkar-2026-09-22.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#contact"
           className="navbar-cv"
         >
-          Resume ↗
+          Let&apos;s Connect
         </a>
       </div>
     </nav>

@@ -130,7 +130,7 @@ export function Projects() {
                 <span style={{
                   fontSize: '0.6875rem',
                   color: 'var(--text-3)',
-                  fontFamily: "'Space Mono', monospace",
+                  fontFamily: "'Inter', sans-serif",
                   whiteSpace: 'nowrap',
                   paddingTop: '0.125rem',
                 }}>

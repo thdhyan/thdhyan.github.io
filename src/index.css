@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ── Palette (OKLCH — perceptually uniform) ──────────────── */
 :root {
@@ -9,12 +9,13 @@
   --charcoal:    oklch(18% 0.012 255);
   --charcoal-hi: oklch(25% 0.012 255);
 
-  /* Accent scale — soft green + light gray */
+  /* Accent scale — purple #6B59D0 (hue 286) + light gray */
+  --rose-accent: #6B59D0;        /* exact mockup accent — solid fills */
   --rose-bright: oklch(96% 0.006 255);
-  --rose-mid:    oklch(78% 0.14 152);
-  --rose-deep:   oklch(55% 0.08 160);
-  --rose-glow:   oklch(78% 0.14 152 / 0.10);
-  --rose-border: oklch(78% 0.14 152 / 0.16);
+  --rose-mid:    oklch(72% 0.15 286);
+  --rose-deep:   oklch(55% 0.08 286);
+  --rose-glow:   oklch(72% 0.15 286 / 0.10);
+  --rose-border: oklch(72% 0.15 286 / 0.16);
   --rose-border-hi: oklch(92% 0.02 255 / 0.32);
 
   /* Text — all ≥4.5:1 on --bg */
@@ -31,7 +32,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   color: var(--text-1);
   overflow-x: hidden;
@@ -45,9 +46,9 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 0%   0%,   oklch(78% 0.14 152 / 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 55% at 0%   0%,   oklch(72% 0.15 286 / 0.12) 0%, transparent 60%),
     radial-gradient(ellipse 65% 50% at 100% 0%,   oklch(96% 0.006 255 / 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 50% at 0%   100%, oklch(78% 0.14 152 / 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 50% at 0%   100%, oklch(72% 0.15 286 / 0.08) 0%, transparent 60%),
     radial-gradient(ellipse 70% 55% at 100% 100%, oklch(96% 0.006 255 / 0.10) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
@@ -55,6 +56,7 @@ body::before {
 
 /* ── Typography ──────────────────────────────────────────── */
 h1, h2, h3, h4 {
+  font-family: 'Sora', sans-serif;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -133,7 +135,7 @@ p {
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 52% 40%, oklch(70% 0.08 140 / 0.16), transparent 28%),
+    radial-gradient(circle at 52% 40%, oklch(70% 0.10 286 / 0.16), transparent 28%),
     radial-gradient(circle at 20% 28%, oklch(97% 0.004 280 / 0.18), transparent 24%),
     radial-gradient(circle at 78% 42%, oklch(97% 0.004 280 / 0.10), transparent 22%),
     linear-gradient(180deg, oklch(8% 0.01 290) 0%, oklch(6% 0.008 290) 100%);
@@ -157,7 +159,7 @@ p {
 .hero-stage-fallback-glow-right {
   right: 10%;
   top: 20%;
-  background: radial-gradient(circle, oklch(70% 0.08 140 / 0.20) 0%, transparent 68%);
+  background: radial-gradient(circle, oklch(70% 0.10 286 / 0.20) 0%, transparent 68%);
 }
 
 .hero-stage-fallback-floor {
@@ -244,9 +246,9 @@ p {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 52% 42%, oklch(78% 0.14 152 / 0.10), transparent 34%),
+    radial-gradient(circle at 52% 42%, oklch(72% 0.15 286 / 0.10), transparent 34%),
     radial-gradient(circle at 22% 30%, oklch(96% 0.006 255 / 0.08), transparent 26%),
-    radial-gradient(circle at 76% 48%, oklch(78% 0.14 152 / 0.06), transparent 24%),
+    radial-gradient(circle at 76% 48%, oklch(72% 0.15 286 / 0.06), transparent 24%),
     linear-gradient(to bottom, transparent 58%, oklch(7.5% 0.010 255 / 0.16) 100%);
 }
 
@@ -317,7 +319,7 @@ p {
 }
 
 .navbar-logo {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Sora', sans-serif;
   font-weight: 700;
   font-size: 0.8125rem;
   color: var(--rose-mid);
@@ -493,7 +495,7 @@ p {
   align-items: center;
   gap: 0.75rem;
   padding: 0.7rem 1.125rem 0.7rem 1.5rem;
-  background: oklch(50% 0.28 303 / 0.18);
+  background: var(--rose-accent);
   border: 1px solid var(--rose-border-hi);
   border-radius: 999px;
   color: var(--text-1);
@@ -505,8 +507,8 @@ p {
 }
 
 .btn-primary:hover {
-  background: oklch(50% 0.28 303 / 0.32);
-  box-shadow: 0 0 32px oklch(50% 0.28 303 / 0.3);
+  background: oklch(60% 0.16 286);
+  box-shadow: 0 0 32px oklch(54.5% 0.177 286 / 0.45);
   transform: translateY(-1px);
 }
 

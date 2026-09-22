@@ -164,7 +164,7 @@ export function Loader({ onDone }) {
       {/* Label */}
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
         <span style={{
-          fontFamily: "'Space Mono', monospace",
+          fontFamily: "'Sora', sans-serif",
           fontSize: '0.875rem',
           fontWeight: 700,
           color: 'oklch(72% 0.22 308)',

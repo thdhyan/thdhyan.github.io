@@ -18,7 +18,8 @@ export function Hero() {
           marginBottom: '1.5rem',
           color: 'var(--text-1)',
         }}>
-          Dhyan<br />Thakkar
+          Dhyan<br />
+          <span style={{ color: 'var(--rose-accent)' }}>THAKKAR</span>
         </h1>
 
         <p style={{
@@ -33,8 +34,8 @@ export function Hero() {
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="#contact" className="btn-primary">
-            Contact Me
+          <a href="#projects" className="btn-primary">
+            View Projects
             <div className="btn-icon-wrapper">
               <ArrowRight weight="bold" size={16} />
             </div>
@@ -65,7 +66,7 @@ export function Hero() {
             height: '48px',
             background: 'linear-gradient(to bottom, transparent, var(--rose-mid))',
           }} />
-          Scroll
+          Scroll to explore
         </div>
       </div>
 

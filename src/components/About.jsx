@@ -16,7 +16,7 @@ export function About() {
         <span className="eyebrow">Background</span>
 
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '1.5rem' }}>
-          About Me
+          Robotics Engineer. Problem Solver. Builder of Intelligent Machines.
         </h2>
 
         <p style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', marginBottom: '1rem', maxWidth: '42rem', marginInline: 'auto' }}>
@@ -60,7 +60,7 @@ export function About() {
                 <p style={{ color: 'var(--text-1)', fontWeight: 600, fontSize: '0.9375rem', marginBottom: '0.2rem' }}>{role}</p>
                 <p style={{ color: 'var(--rose-mid)', fontSize: '0.8125rem', margin: 0 }}>{org}</p>
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-3)', fontFamily: "'Space Mono', monospace", whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-3)', fontFamily: "'Inter', sans-serif", whiteSpace: 'nowrap' }}>
                 {period}
               </span>
             </div>

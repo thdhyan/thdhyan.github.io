@@ -71,7 +71,7 @@ export function Publications() {
                   <span style={{
                     fontSize: '0.75rem',
                     color: 'var(--text-3)',
-                    fontFamily: "'Space Mono', monospace",
+                    fontFamily: "'Inter', sans-serif",
                     background: 'var(--rose-glow)',
                     border: '1px solid var(--rose-border)',
                     borderRadius: '999px',
