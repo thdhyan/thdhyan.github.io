@@ -1,0 +1,123 @@
+/* Simple-site custom layout: card grids + compressed sections */
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr));
+	gap: 1.25rem;
+	text-align: left;
+	margin-top: 2rem;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #e4e4e4;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #fff;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+	border-color: #bdbdbd;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card-img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	background: #f2f2f2;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	padding: 1rem 1.15rem 1.15rem;
+	flex: 1;
+}
+
+.card-body h3 {
+	margin: 0;
+	font-size: 1.02rem;
+	line-height: 1.3;
+	text-align: left;
+	color: var(--fg, #1c1c1c);
+}
+
+.card-meta {
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #8a8a8a;
+	text-align: left;
+}
+
+.card-body p {
+	margin: 0;
+	font-size: 0.875rem;
+	line-height: 1.55;
+	color: #4d4d4d;
+	text-align: left;
+	flex: 1;
+}
+
+.card-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	margin-top: 0.25rem;
+}
+
+.card-tags span {
+	font-size: 0.68rem;
+	padding: 0.15rem 0.5rem;
+	border: 1px solid #d8d8d8;
+	border-radius: 999px;
+	color: #6b6b6b;
+	white-space: nowrap;
+}
+
+/* Publications: compact 2-up list */
+.pub-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr));
+	gap: 0.9rem;
+	text-align: left;
+	margin-top: 2rem;
+}
+
+.pub-item {
+	border: 1px solid #e4e4e4;
+	border-radius: 8px;
+	padding: 0.9rem 1.1rem;
+	text-align: left;
+	transition: border-color 0.2s;
+}
+
+.pub-item:hover {
+	border-color: #bdbdbd;
+}
+
+.pub-item h3 {
+	margin: 0 0 0.3rem;
+	font-size: 0.95rem;
+	line-height: 1.35;
+	text-align: left;
+}
+
+.pub-item p {
+	margin: 0;
+	font-size: 0.78rem;
+	color: #8a8a8a;
+	text-align: left;
+}
+
+@media (max-width: 736px) {
+	.grid,
+	.pub-grid {
+		grid-template-columns: 1fr;
+	}
+}
