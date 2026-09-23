@@ -108,7 +108,7 @@ export default function Editor() {
   const [view, setView] = useState(() => {
     // start framed exactly like the hero (layout/draft camera) when known
     const l = loadInitial();
-    return l.camera ? { pos: [...l.camera.pos], fov: l.camera.fov } : { pos: [0, 3, 14], fov: 40 };
+    return l.camera ? { pos: [...l.camera.pos], fov: l.camera.fov } : { pos: [1.1, 0.9, 8.4], fov: 28 };
   });
   const objs = useRef({});
   const reg = (id, o) => { objs.current[id] = o; };
@@ -231,7 +231,7 @@ export default function Editor() {
 
         <Label>Camera</Label>
         <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
-          <button onClick={() => setView({ pos: [0, 1, 11.5], fov: 28 })} style={chip(view.fov === 28)}>Hero view</button>
+          <button onClick={() => setView({ pos: [1.1, 0.9, 8.4], fov: 28 })} style={chip(view.fov === 28)}>Hero view</button>
           <button onClick={() => setView({ pos: [0, 3, 14], fov: 40 })} style={chip(view.fov === 40)}>Overview</button>
         </div>
 

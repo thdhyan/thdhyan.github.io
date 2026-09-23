@@ -97,7 +97,7 @@ await page.locator('span:text-is("pos X") ~ input[type="range"]').evaluate((el, 
   const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
   setter.call(el, String(v));
   el.dispatchEvent(new Event('input', { bubbles: true }));
-}, 3.2);
+}, 1.1);
 await page.waitForTimeout(300);
 const camAfter = await page.evaluate(() => window.__heroCam?.position.x ?? null);
 ok(camAfter !== null && Math.abs(camAfter - 3.2) < 1e-6,
