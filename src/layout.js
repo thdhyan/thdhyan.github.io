@@ -5,7 +5,7 @@
 export const LAYOUT = {
   /* Hero camera (Hero.jsx Canvas) — tune via /editor "Hero camera" sliders */
   camera: {
-    pos: [0.6, 0.6, 6.2],
+    pos: [1.1, 0.9, 8.4],
     fov: 28,
   },
   /* hero-robot.glb is origin-centered (y in [-0.5, 0.5]) — we lift by half of scale */
@@ -46,7 +46,7 @@ export const LAYOUT = {
     {
       id: 'spot',
       model: 'spot',
-      pos: [1.7396822341754878, 0, 0],
+      pos: [1.445263276091749, 0, 0],
       rotY: 4.537856055185257,
       rot: [0, 4.537856055185257, 0],
       scale: 1,
@@ -57,7 +57,7 @@ export const LAYOUT = {
         front_right_hip_y: 0.6, front_right_knee: -1.11,
         rear_left_hip_y: 0.6, rear_left_knee: -1.11,
         rear_right_hip_y: 0.6, rear_right_knee: -1.11,
-        front_left_hip_x: -0.0253981633974483,
+        front_left_hip_x: -0.0853981633974483,
         arm_joint3: 1.76,
         arm_joint2: -1.285191,
         arm_joint1: 1.258407,
@@ -69,7 +69,7 @@ export const LAYOUT = {
     {
       id: 'k1',
       model: 'k1',
-      pos: [1.6362468190900428, 0, 2.1300628108167143],
+      pos: [1.6362468190900428, 0.022960098975611437, 2.1300628108167143],
       rotY: 4.468042885105484,
       rot: [0, 4.468042885105484, 0],
       scale: 1,
