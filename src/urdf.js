@@ -1,9 +1,14 @@
-/* Runtime URDF loading for the fleet (local dev workflow).
+/* Runtime robot loading for the fleet.
 
-   Loads the ORIGINAL URDFs from models-raw/ (served by the vite middleware in
-   vite.config.js) instead of the texture-stripped GLBs — so robots keep their
-   real material colors and DAE/OBJ textures. Each robot is converted Z-up →
-   Y-up and floor-aligned (min-y = 0) once all meshes have loaded.
+   DEV (local): loads the ORIGINAL URDFs from models-raw/ (served by the vite
+   middleware in vite.config.js) — real material colors/textures, poseable
+   joints, used by the /editor page. Z-up → Y-up + floor-aligned on load.
+
+   PROD (static GitHub Pages): models-raw/ is gitignored and never deployed,
+   so the fleet loads pose-baked Draco GLBs from public/models/ instead
+   (built by tools/urdf2glb.py using tools/fleet-poses.json — regenerate them
+   whenever src/layout.js joint poses change: node tools/exportposes.mjs &&
+   python3 tools/urdf2glb.py && draco-optimize into public/models/).
 
    urdf-loader fires its onLoad before meshes finish, so we wait on the
    THREE.LoadingManager's onLoad (mesh loaders itemStart/itemEnd through it). */
@@ -13,6 +18,7 @@ import URDFLoader from 'urdf-loader';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 export const FLEET_URDFS = {
   g1: { url: '/models-raw/g1_legged/g1_29dof_rev_1_0.urdf' },
@@ -23,6 +29,9 @@ export const FLEET_URDFS = {
   so100: { url: '/models-raw/so100/urdf/so101_new_calib.urdf' },
   'nova-carter': { url: '/models-raw/nova_carter/nova_carter.urdf' },
 };
+
+const PROD = !import.meta.env.DEV;
+console.info('[fleet] init PROD=', PROD);
 
 /* OBJ (nova-carter) needs MTL for colors; STL/DAE use urdf-loader's built-ins.
    DAE first tries a decimated GLB from models-raw-lite/ (tools/daelite.py) —
@@ -127,14 +136,42 @@ function finishRobot(robot) {
 }
 
 const cache = new Map();
-if (import.meta.env.DEV) { window.__fleet = cache; window.__THREE = THREE; } // dev: inspect loaded robots
+window.__fleet = cache; // fleet promise cache — resolved == fully loaded + decoded (tests)
+if (import.meta.env.DEV) window.__THREE = THREE; // dev: inspect scene graph
 
-export function loadFleetRobot(id) {
-  if (cache.has(id)) return cache.get(id);
-  const cfg = FLEET_URDFS[id];
-  if (!cfg) return Promise.reject(new Error(`unknown fleet robot: ${id}`));
+/* PROD loader — pose-baked Draco GLBs (same decoder setup as drei's useGLTF). */
+let glbLoader = null;
+function glbLoaderOnce() {
+  if (!glbLoader) {
+    const draco = new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+    glbLoader = new GLTFLoader().setDRACOLoader(draco);
+  }
+  return glbLoader;
+}
 
-  const promise = new Promise((resolve, reject) => {
+function loadGlbRobot(id) {
+  console.info('[fleet] glb fetch', id);
+  return new Promise((resolve, reject) => {
+    glbLoaderOnce().load(
+      `/models/${id}.glb`,
+      (gltf) => {
+        console.info('[fleet] glb decoded', id);
+        const scene = gltf.scene;
+        // URDF-shaped API so component code can treat both paths alike;
+        // no setJointValues — poses are baked into the GLB (tools/urdf2glb.py)
+        scene.joints = {};
+        realign(scene); // idempotent — urdf2glb already floor-aligned it
+        console.info('[fleet] glb aligned', id);
+        resolve(scene);
+      },
+      undefined,
+      reject,
+    );
+  });
+}
+
+function loadUrdfRobot(id, cfg) {
+  return new Promise((resolve, reject) => {
     const manager = new THREE.LoadingManager();
     manager.onLoad = () => resolve(finishRobot(robot));
     const loader = new URDFLoader(manager);
@@ -148,21 +185,31 @@ export function loadFleetRobot(id) {
       (err) => reject(err),
     );
   });
+}
+
+export function loadFleetRobot(id) {
+  if (cache.has(id)) return cache.get(id);
+  const cfg = FLEET_URDFS[id];
+  if (!cfg) return Promise.reject(new Error(`unknown fleet robot: ${id}`));
+
+  const promise = PROD ? loadGlbRobot(id) : loadUrdfRobot(id, cfg);
   cache.set(id, promise);
   return promise;
 }
 
-/* React hook: resolves the floor-aligned URDF robot, applies joint poses. */
+/* React hook: resolves the floor-aligned robot, applies joint poses (URDF path). */
 export function useFleetRobot(id, joints) {
   const [robot, setRobot] = useState(null);
   useEffect(() => {
     if (!FLEET_URDFS[id]) return undefined;
     let live = true;
-    loadFleetRobot(id).then((r) => { if (live) setRobot(r); }).catch((e) => console.error(`[urdf] ${id}:`, e));
+    loadFleetRobot(id)
+      .then((r) => { console.info('[fleet] mounted', id); if (live) setRobot(r); })
+      .catch((e) => console.error(`[fleet] ${id}:`, e));
     return () => { live = false; };
   }, [id]);
   useEffect(() => {
-    if (!robot) return;
+    if (!robot || typeof robot.setJointValues !== 'function') return; // GLB: no joints
     // reset all poseable joints to 0, then overlay the requested pose,
     // then re-floor-align so posed feet stay on the ground
     const zero = {};
