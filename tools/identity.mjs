@@ -7,6 +7,8 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 mkdirSync('logs', { recursive: true });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+/* reduced motion -> frameloop 'demand' — close camera starves software GL (prodcheck recipe) */
+await page.emulateMedia({ reducedMotion: 'reduce' });
 await page.emulateMedia({ reducedMotion: 'reduce' });
 page.on('pageerror', (e) => console.log('pageerror:', e.message.slice(0, 200)));
 await page.goto('http://localhost:5173', { waitUntil: 'load', timeout: 30000 });

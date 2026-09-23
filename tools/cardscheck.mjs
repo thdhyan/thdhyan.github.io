@@ -5,6 +5,18 @@ import { chromium } from '@playwright/test';
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+/* Two-sided motion setup: emulation 'reduce' keeps the hero on frameloop
+   'demand' (close camera starves software GL otherwise), but Projects.jsx
+   STRIP_MQ requires no-preference — so rewrite that query's motion clause to
+   'reduce', which matches under this emulation and activates the strip. */
+await page.emulateMedia({ reducedMotion: 'reduce' });
+await page.addInitScript(() => {
+  const orig = window.matchMedia.bind(window);
+  window.matchMedia = (q) =>
+    orig(typeof q === 'string' && q.includes('prefers-reduced-motion: no-preference')
+      ? q.replace('prefers-reduced-motion: no-preference', 'prefers-reduced-motion: reduce')
+      : q);
+});
 page.on('pageerror', (e) => console.log('pageerror:', e.message.slice(0, 200)));
 await page.goto('http://localhost:5173', { waitUntil: 'load', timeout: 30000 });
 await page.waitForFunction(() => {

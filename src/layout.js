@@ -5,7 +5,7 @@
 export const LAYOUT = {
   /* Hero camera (Hero.jsx Canvas) — tune via /editor "Hero camera" sliders */
   camera: {
-    pos: [0, 1, 11.5],
+    pos: [0, 1, 8],
     fov: 28,
   },
   /* hero-robot.glb is origin-centered (y in [-0.5, 0.5]) — we lift by half of scale */
@@ -36,21 +36,6 @@ export const LAYOUT = {
       rot: [0, 4.258603374866164, 0],
       scale: 1.2,
       // relaxed stance: knees bent, feet under hips, ~90% of max stand height
-      joints: {
-        FR_thigh_joint: 0.45, FR_calf_joint: -0.9,
-        FL_thigh_joint: 0.45, FL_calf_joint: -0.9,
-        RR_thigh_joint: 0.45, RR_calf_joint: -0.9,
-        RL_thigh_joint: 0.45, RL_calf_joint: -0.9,
-      },
-    },
-    {
-      id: 'go1',
-      model: 'go1',
-      pos: [0.8676792313226616, 0, 2.96],
-      rotY: 5.113814708343385,
-      rot: [0, 5.113814708343385, 0],
-      scale: 1.2,
-      // relaxed stance (same FK solve as go2)
       joints: {
         FR_thigh_joint: 0.45, FR_calf_joint: -0.9,
         FL_thigh_joint: 0.45, FL_calf_joint: -0.9,
@@ -123,22 +108,6 @@ export const LAYOUT = {
         left_shoulder_pitch_joint: -0.3292,
         left_shoulder_yaw_joint: -1.638,
       },
-    },
-    {
-      id: 'so100',
-      model: 'so100',
-      pos: [2.279851673147106, 0, 1],
-      rotY: -0.8,
-      rot: [0, -0.8, 0],
-      scale: 2.05,
-    },
-    {
-      id: 'nova-carter',
-      model: 'nova-carter',
-      pos: [0.11558441877378889, 0, 2.94],
-      rotY: 0.6981317007977318,
-      rot: [0, 0.6981317007977318, 0],
-      scale: 1,
     },
   ],
 };

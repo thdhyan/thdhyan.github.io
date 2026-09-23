@@ -5,15 +5,17 @@ import { chromium } from '@playwright/test';
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+/* reduced motion -> frameloop 'demand' — close camera starves software GL (prodcheck recipe) */
+await page.emulateMedia({ reducedMotion: 'reduce' });
 page.on('pageerror', (e) => console.log('pageerror:', e.message.slice(0, 200)));
 await page.goto('http://localhost:5173/editor', { waitUntil: 'load', timeout: 30000 });
-await page.waitForFunction(() => window.__fleet && window.__fleet.size >= 7, { timeout: 60000 });
+await page.waitForFunction(() => window.__fleet && window.__fleet.size >= 4, { timeout: 60000 });
 
 const fails = [];
 const ok = (cond, msg) => { console.log(cond ? 'OK  ' : 'FAIL', msg); if (!cond) fails.push(msg); };
 
-// 1. select go1 via its chip
-await page.locator('button', { hasText: /^go1$/ }).click();
+// 1. select go2 via its chip
+await page.locator('button', { hasText: /^go2$/ }).click();
 
 // 2. joint sliders panel rendered (scoped: joint rows have span[title]; cam sliders don't)
 const JOINT_RANGE = 'span[title] ~ input[type="range"]';
@@ -22,7 +24,7 @@ ok(sliderCount >= 8, `joint sliders rendered (${sliderCount})`);
 
 // 3. pick FR_calf_joint, drive its slider to the midpoint of its limits
 const target = await page.evaluate(async () => {
-  const robot = await window.__fleet.get('go1');
+  const robot = await window.__fleet.get('go2');
   const name = 'FR_calf_joint';
   const j = robot.joints[name];
   const lo = j.ignoreLimits ? -Math.PI : j.limit.lower;
@@ -32,7 +34,7 @@ const target = await page.evaluate(async () => {
 const idx = await (async () => {
   // sliders follow Object.entries(robot.joints) order (non-fixed) — find index by order of appearance
   const names = await page.evaluate(async () => {
-    const robot = await window.__fleet.get('go1');
+    const robot = await window.__fleet.get('go2');
     return Object.entries(robot.joints)
       .filter(([, j]) => j.jointType !== 'fixed')
       .map(([n]) => n);
@@ -48,7 +50,7 @@ await page.locator(JOINT_RANGE).nth(idx).evaluate((el, v) => {
 await page.waitForTimeout(400);
 
 const afterSlider = await page.evaluate(async (name) => {
-  const robot = await window.__fleet.get('go1');
+  const robot = await window.__fleet.get('go2');
   return { value: robot.joints[name].jointValue[0], min_y: robot.userData.floorBox.min[1] };
 }, target.name);
 ok(Math.abs(afterSlider.value - target.target) < 0.03,
@@ -63,7 +65,7 @@ await page.locator('input[type="number"]').nth(5).evaluate((el, v) => {
 }, '15');
 await page.waitForTimeout(300);
 const rotZ = await page.evaluate(() => {
-  const g = window.__editor?.current?.go1;
+  const g = window.__editor?.current?.go2;
   const input = document.querySelectorAll('input[type="number"]')[5];
   return { scene: g ? g.rotation.z : null, shown: input ? input.value : null };
 });
@@ -75,8 +77,8 @@ ok(rotZ.scene !== null && Math.abs(rotZ.scene - (15 * Math.PI) / 180) < 1e-6,
 await page.locator('button', { hasText: /^Reset pose$/ }).click();
 await page.waitForTimeout(400);
 const afterReset = await page.evaluate(async () => {
-  const robot = await window.__fleet.get('go1');
-  // zero is out of range for go1's calf (limits [-2.818, -0.888]) — urdf-loader
+  const robot = await window.__fleet.get('go2');
+  // zero is out of range for go2's calf limits — urdf-loader
   // clamps to the mechanical limit, which is the correct "reset" behavior
   const clamp = (j) => Math.min(Math.max(0, j.limit.lower), j.limit.upper);
   const bad = Object.entries(robot.joints)

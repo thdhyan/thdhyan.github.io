@@ -4,10 +4,12 @@ import { chromium } from '@playwright/test';
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+/* reduced motion -> frameloop 'demand' — close camera starves software GL (prodcheck recipe) */
+await page.emulateMedia({ reducedMotion: 'reduce' });
 page.on('pageerror', (e) => console.log('pageerror:', e.message.slice(0, 200)));
 await page.goto('http://localhost:5173/', { waitUntil: 'load', timeout: 30000 });
 
-const ids = ['go1', 'go2', 'spot', 'k1', 'g1', 'so100', 'nova-carter'];
+const ids = ['go2', 'spot', 'k1', 'g1'];
 const colors = await page.evaluate(async (ids) => {
   const deadline = performance.now() + 60000;
   const out = {};
