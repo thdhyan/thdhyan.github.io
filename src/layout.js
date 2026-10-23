@@ -107,7 +107,8 @@ export const LAYOUT = {
     {
       id: 'microduck',
       model: 'microduck',
-      pos: [-1.0, 0, 3.4],
+      tumble: true,
+      pos: [-0.9, 0, 3.4],
       rotY: -1.15,
       rot: [0, -1.15, 0],
       scale: 1.5,
@@ -122,35 +123,34 @@ export const LAYOUT = {
       scale: 1.0,
       joints: {},
     },
+    /* left side, behind the microduck */
     {
       id: 'nova-carter',
       model: 'nova-carter',
-      pos: [2.55, 0, 0.5],
-      rotY: -1.9,
-      rot: [0, -1.9, 0],
+      pos: [-1.0, 0, 1.5],
+      rotY: -1.2,
+      rot: [0, -1.2, 0],
       scale: 1,
       joints: {},
     },
     {
       id: 'locobot',
       model: 'locobot',
-      pos: [-0.1, 0, 3.6],
+      pos: [-0.35, 0, 2.7],
       rotY: -1.2,
       rot: [0, -1.2, 0],
-      scale: 1.5,
+      scale: 1.2,
       joints: {},
     },
-    /* XLeRobot-style mobile manipulator: procedural base + the SO-101 arm */
+    /* XLeRobot (dual SO-101 arms + head on a wheeled base) */
     {
-      id: 'so100',
-      model: 'so100',
-      base: 'xle',
-      pos: [2.3, 0, 3.0],
+      id: 'xlerobot',
+      model: 'xlerobot',
+      pos: [2.1, 0, 2.6],
       rotY: -1.9,
       rot: [0, -1.9, 0],
-      scale: 1.0,
-      // folded ready pose
-      joints: { Pitch: -0.9, Elbow: 1.2, Wrist_Pitch: 0.6 },
+      scale: 0.65,
+      joints: {},
     },
   ],
 };

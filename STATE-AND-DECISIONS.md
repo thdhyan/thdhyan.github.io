@@ -95,3 +95,9 @@
 - Ducks/locobot face the camera (rotY ≈ -1.15…-1.9; robot forward is +X).
 - Section order: Publications before Skills. Projects strip pulled up (marginTop -5rem, flex-start) to close the gap under the timeline.
 - Hero/sections capped at ~60–62rem so tall monitors don't push content far down.
+
+## Real URDFs + microduck tumble (2026-10-23)
+- locobot now = Interbotix kobuki_version URDF; so100+procedural XleBase replaced by real XLeRobot URDF (`xlerobot` pack, scale 0.65, right side).
+- Nova Carter moved left, behind microduck/locobot.
+- Microduck: `tumblePose` in Scene.jsx (12 s loop: forward somersault at 1.2–2.4 s, sideways roll at 6.2–7.6 s) + tucked-knee keys in trajectories.js.
+- `models-raw/` gitignored; rebuild packs with tools/urdf2pack.py (also gitignored).

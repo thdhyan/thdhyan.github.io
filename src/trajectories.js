@@ -75,14 +75,24 @@ export const TRAJ = {
     ],
   },
 
-  /* Microduck: weight shift with head turns and a jaw flap */
+  /* Microduck: head looks, then a crouch → forward somersault, more looks, crouch → sideways roll.
+     The whole-body flips live in Scene.jsx (tumblePose, same 12 s clock). */
   microduck: {
-    period: 6, phase: 0,
+    period: 12, phase: 0,
     keys: [
       { t: 0,   d: {} },
-      { t: 1.5, d: { head_yaw: 0.6, head_pitch: 0.2, left_hip_roll: 0.18, right_hip_roll: 0.18, jaw: 0.4 } },
-      { t: 3,   d: { head_yaw: -0.6, head_pitch: -0.1, left_hip_roll: -0.18, right_hip_roll: -0.18, jaw: 0 } },
-      { t: 4.5, d: { head_yaw: 0, head_pitch: 0.3, head_roll: 0.3, jaw: 0.4 } },
+      { t: 0.9, d: { left_knee: 0.7, right_knee: 0.7, head_pitch: 0.3 } },
+      { t: 1.5, d: { left_knee: 1.3, right_knee: 1.3, head_pitch: -0.6, jaw: 0.4 } },
+      { t: 2.3, d: { left_knee: 0.9, right_knee: 0.9, head_pitch: 0.2 } },
+      { t: 3,   d: { jaw: 0.4 } },
+      { t: 4,   d: { head_yaw: 0.7, head_pitch: 0.2, left_hip_roll: 0.15, right_hip_roll: 0.15 } },
+      { t: 5.2, d: { head_yaw: -0.7, left_hip_roll: -0.15, right_hip_roll: -0.15, jaw: 0.4 } },
+      { t: 6.2, d: { left_knee: 0.7, right_knee: 0.7 } },
+      { t: 6.9, d: { left_knee: 1.3, right_knee: 1.3, head_roll: 0.35, jaw: 0.3 } },
+      { t: 7.7, d: { left_knee: 0.8, right_knee: 0.8 } },
+      { t: 8.6, d: {} },
+      { t: 9.8, d: { head_roll: 0.4, head_pitch: 0.25, jaw: 0.4 } },
+      { t: 11,  d: { head_roll: -0.3, head_pitch: 0.1 } },
     ],
   },
 
@@ -110,26 +120,26 @@ export const TRAJ = {
     ],
   },
 
-  /* LoCoBot: reach out, open the gripper, pull back */
+  /* LoCoBot (Kobuki): camera pans, arm reaches out, gripper opens, pulls back */
   locobot: {
     period: 8, phase: 3,
     keys: [
       { t: 0,   d: {} },
-      { t: 2,   d: { waist: 0.7, shoulder: 0.35, elbow: -0.4, wrist_angle: 0.3, left_finger: 0.015, right_finger: -0.015 } },
-      { t: 4,   d: { waist: 0.7, shoulder: 0.5, elbow: -0.2, wrist_angle: 0.5, left_finger: 0, right_finger: 0 } },
-      { t: 6,   d: { waist: -0.6, shoulder: 0.2, elbow: -0.3, wrist_rotate: 0.8 } },
+      { t: 2,   d: { waist: 0.7, shoulder: 0.35, elbow: -0.4, wrist_angle: 0.3, left_finger: 0.015, right_finger: -0.015, pan: 0.5, tilt: 0.15 } },
+      { t: 4,   d: { waist: 0.7, shoulder: 0.5, elbow: -0.2, wrist_angle: 0.5, left_finger: 0, right_finger: 0, pan: 0.2 } },
+      { t: 6,   d: { waist: -0.6, shoulder: 0.2, elbow: -0.3, wrist_rotate: 0.8, pan: -0.6, tilt: -0.1 } },
     ],
   },
 
-  /* XLeRobot-style SO-101: pan to a target, dip, grab, sweep back */
-  so100: {
-    period: 9, phase: 0.4,
+  /* XLeRobot: head scans, wheels roll a touch, both SO-101 arms reach and grip in turn */
+  xlerobot: {
+    period: 10, phase: 0.4,
     keys: [
       { t: 0,   d: {} },
-      { t: 2,   d: { Rotation: 0.7, Pitch: 0.4, Elbow: 0.3, Wrist_Pitch: -0.3, Jaw: 0.8 } },
-      { t: 3.5, d: { Rotation: 0.7, Pitch: 0.7, Elbow: 0.5, Wrist_Pitch: -0.4, Jaw: 0 } },
-      { t: 5.5, d: { Rotation: -0.5, Pitch: 0.2, Elbow: 0.1, Wrist_Roll: 0.8, Jaw: 0.3 } },
-      { t: 7.5, d: { Rotation: -0.2, Pitch: 0.1, Wrist_Roll: -0.4 } },
+      { t: 2,   d: { Rotation_L: 0.6, Pitch_L: 0.4, Elbow_L: 0.3, Wrist_Pitch_L: -0.3, Jaw_L: 0.8, head_pan_joint: 0.5, left_wheel_joint: 0.5, right_wheel_joint: 0.5 } },
+      { t: 3.5, d: { Rotation_L: 0.6, Pitch_L: 0.7, Elbow_L: 0.5, Wrist_Pitch_L: -0.4, Jaw_L: 0, head_pan_joint: 0.4 } },
+      { t: 5.5, d: { Rotation_R: -0.6, Pitch_R: 0.4, Elbow_R: 0.3, Wrist_Roll_R: 0.8, Jaw_R: 0.8, head_pan_joint: -0.5, head_tilt_joint: 0.2, left_wheel_joint: 0, right_wheel_joint: 0 } },
+      { t: 7.5, d: { Rotation_R: -0.4, Pitch_R: 0.7, Elbow_R: 0.5, Jaw_R: 0, head_pan_joint: -0.3, left_wheel_joint: -0.5, right_wheel_joint: -0.5 } },
     ],
   },
 };

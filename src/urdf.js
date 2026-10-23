@@ -33,13 +33,14 @@ export const FLEET_URDFS = {
     packages: { open_duck_mini_v2_urdf: '/models-raw/openduck' },
   },
   'nova-carter': { url: '/models-raw/nova_carter/nova_carter.urdf' },
-  locobot: { url: '/models-raw/locobot/locobot_wx200.urdf' },
+  locobot: { url: '/models-raw/locobot_kobuki/locobot_kobuki.urdf' },
+  xlerobot: { url: '/models-raw/xlerobot/xlerobot.urdf' },
 };
 
 const PROD = !import.meta.env.DEV;
 /* Robots with a packed URDF+GLB in public/models load that way in dev too, so
    dev matches production (colors/overrides baked by tools/urdf2pack.py). */
-const PACKED = new Set(['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck', 'nova-carter', 'so100', 'locobot']);
+const PACKED = new Set(['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck', 'nova-carter', 'locobot', 'xlerobot']);
 console.info('[fleet] init PROD=', PROD);
 
 /* OBJ (nova-carter) needs MTL for colors; STL/DAE use urdf-loader's built-ins.

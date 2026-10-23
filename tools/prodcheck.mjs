@@ -6,7 +6,7 @@ import { chromium } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
 const BASE = process.env.BASE || 'http://localhost:4173';
-const FLEET = ['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck'];
+const FLEET = ['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck', 'nova-carter', 'locobot', 'xlerobot'];
 
 mkdirSync('logs', { recursive: true });
 const browser = await chromium.launch();

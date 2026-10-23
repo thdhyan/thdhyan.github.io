@@ -55,65 +55,52 @@ function PadRing({ radius }) {
   );
 }
 
-/* XLeRobot-style base for the SO-101 arm: low chassis on three omni wheels,
-   a short column and a top plate the arm sits on. Returns the plate height. */
-const XLE_TOP = 0.46;
-function XleBase({ animate }) {
-  const wheels = useRef([]);
-  useFrame((state) => {
-    if (!animate) return;
-    wheels.current.forEach((w) => { if (w) w.rotation.z = state.clock.elapsedTime * 1.2; });
-  });
-  const dark = { color: '#1d1b26', roughness: 0.6, metalness: 0.3 };
-  const white = { color: '#d9d7e4', roughness: 0.45, metalness: 0.1 };
-  return (
-    <group>
-      <mesh position={[0, 0.13, 0]}><cylinderGeometry args={[0.2, 0.2, 0.1, 6]} /><meshStandardMaterial {...dark} /></mesh>
-      {[0, 1, 2].map((k) => {
-        const a = (k * Math.PI * 2) / 3;
-        return (
-          <group key={k} position={[Math.cos(a) * 0.19, 0.065, Math.sin(a) * 0.19]} rotation={[0, -a, 0]}>
-            <mesh ref={(m) => { wheels.current[k] = m; }} rotation={[Math.PI / 2, 0, 0]}>
-              <cylinderGeometry args={[0.065, 0.065, 0.05, 20]} />
-              <meshStandardMaterial color="#2b2936" roughness={0.8} />
-            </mesh>
-          </group>
-        );
-      })}
-      <mesh position={[0, 0.3, 0]}><cylinderGeometry args={[0.045, 0.06, 0.3, 16]} /><meshStandardMaterial {...white} /></mesh>
-      <mesh position={[0, XLE_TOP - 0.02, 0]}><boxGeometry args={[0.2, 0.04, 0.16]} /><meshStandardMaterial {...white} /></mesh>
-    </group>
-  );
+/* Microduck party trick: a forward somersault, later a sideways roll (12 s loop,
+   in step with its joint keyframes in trajectories.js). Returns pivot rotation + hop. */
+const TUMBLE_PERIOD = 12;
+const TUMBLE_PIVOT = 0.15; // body centre height (robot units)
+function tumblePose(time) {
+  const c = ((time % TUMBLE_PERIOD) + TUMBLE_PERIOD) % TUMBLE_PERIOD;
+  const ease = (u) => u * u * (3 - 2 * u);
+  if (c >= 1.2 && c < 2.4) {
+    const u = (c - 1.2) / 1.2;
+    return { rx: 0, rz: -Math.PI * 2 * ease(u), hop: Math.sin(Math.PI * u) * 0.3 };
+  }
+  if (c >= 6.2 && c < 7.6) {
+    const u = (c - 6.2) / 1.4;
+    return { rx: Math.PI * 2 * ease(u), rz: 0, hop: Math.sin(Math.PI * u) * 0.22 };
+  }
+  return { rx: 0, rz: 0, hop: 0 };
 }
 
-function FleetRobot({ id, base, pos, scale, rot, rotY, joints, animate }) {
+function FleetRobot({ id, tumble, pos, scale, rot, rotY, joints, animate }) {
   const robot = useFleetRobot(id, joints);
+  const pivot = useRef();
 
   // robots cast real shadows onto the floor
   useEffect(() => {
     robot?.traverse((o) => { if (o.isMesh) o.castShadow = true; });
   }, [robot]);
 
-  // the arm's base link sits on the plate: undo the loader's bbox centering in x/z
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/immutability -- three.js object mutation, not React state
-    if (base === 'xle' && robot) robot.position.set(0, robot.position.y, 0);
-  }, [robot, base]);
-
   useFrame((state) => {
     const traj = TRAJ[id];
     if (!animate || !traj || !robot || typeof robot.setJointValues !== 'function') return;
-    robot.setJointValues(sampleTrajectory(traj, trajTime(state), joints));
+    const t = trajTime(state);
+    robot.setJointValues(sampleTrajectory(traj, t, joints));
+    if (tumble && pivot.current) {
+      const q = tumblePose(t + traj.phase);
+      pivot.current.rotation.set(q.rx, 0, q.rz);
+      pivot.current.position.y = TUMBLE_PIVOT + q.hop;
+    }
   });
 
   if (!robot) return null;
   return (
     <group position={pos} rotation={rot ?? [0, rotY, 0]} scale={scale}>
-      {base === 'xle' ? (
-        <>
-          <XleBase animate={animate} />
-          <group position={[0, XLE_TOP, 0]}><primitive object={robot} /></group>
-        </>
+      {tumble ? (
+        <group ref={pivot} position={[0, TUMBLE_PIVOT, 0]}>
+          <group position={[0, -TUMBLE_PIVOT, 0]}><primitive object={robot} /></group>
+        </group>
       ) : <primitive object={robot} />}
       <PadRing radius={0.5} />
     </group>
