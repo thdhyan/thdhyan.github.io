@@ -1,4 +1,5 @@
-import { Canvas } from '@react-three/fiber';
+import { useEffect } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
 import { ArrowRight } from '@phosphor-icons/react';
 import { Scene } from './Scene';
 import { LAYOUT } from '../layout';
@@ -6,6 +7,46 @@ import { LAYOUT } from '../layout';
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* The lineup was framed for a ~16:10 desktop. On narrow canvases (phones,
+   vertical monitors) aim at the lineup's centre and pull back until its
+   ~4.5-unit width fits. */
+const FIT_ASPECT = 1.2;
+const LINEUP_WIDTH_FIT = 1.1;
+const MAX_PULLBACK = 2.2;
+const LINEUP_CENTER = [0.85, 0.8, 0];
+
+function FitCamera() {
+  const camera = useThree((s) => s.camera);
+  const aspect = useThree((s) => s.size.width / s.size.height);
+  useEffect(() => {
+    const [x, y, z] = LAYOUT.camera.pos;
+    if (aspect >= FIT_ASPECT) {
+      // pulled back + aimed at the lineup's mid-height so the hero's head
+      // clears the navbar, and nudged right so the dog clears the headline
+      camera.position.set(x, y + 0.4, z * 1.12);
+      camera.lookAt(-0.15, 0.85, 0);
+    } else {
+      const k = Math.min(MAX_PULLBACK, Math.max(1, LINEUP_WIDTH_FIT / aspect));
+      const [cx, cy, cz] = LINEUP_CENTER;
+      camera.position.set(cx + (x - cx) * k, cy + (y - cy) * k, cz + (z - cz) * k);
+      camera.lookAt(cx, cy, cz);
+    }
+    camera.updateProjectionMatrix();
+  }, [camera, aspect]);
+  return null;
+}
+
+function hasWebGL() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
+
+const webglOk = typeof document !== 'undefined' && hasWebGL();
 
 export function Hero() {
   return (
@@ -52,7 +93,7 @@ export function Hero() {
         </div>
 
         {/* Scroll hint */}
-        <div style={{
+        <div className="hero-scroll-hint" style={{
           marginTop: '5rem',
           display: 'flex',
           alignItems: 'center',
@@ -74,7 +115,19 @@ export function Hero() {
       <div className="hero-stage-shell" aria-hidden="true">
         <div className="hero-stage-sticky">
           <div className="hero-stage-frame">
+            {!webglOk ? (
+              <div className="hero-stage-fallback" title="3D scene needs WebGL (enable hardware acceleration)">
+                <div className="hero-stage-fallback-glow hero-stage-fallback-glow-left" />
+                <div className="hero-stage-fallback-glow hero-stage-fallback-glow-right" />
+                <div className="hero-stage-fallback-floor" />
+                <div className="hero-stage-fallback-robot hero-stage-fallback-go2" />
+                <div className="hero-stage-fallback-robot hero-stage-fallback-g1" />
+                <div className="hero-stage-fallback-robot hero-stage-fallback-spot" />
+                <div className="hero-stage-fallback-robot hero-stage-fallback-arm" />
+              </div>
+            ) : (
             <Canvas
+              shadows
               camera={{ position: LAYOUT.camera.pos, fov: LAYOUT.camera.fov }}
               dpr={[1, 1.5]}
               gl={{
@@ -86,8 +139,10 @@ export function Hero() {
               }}
               frameloop={prefersReducedMotion ? 'demand' : 'always'}
             >
+              <FitCamera />
               <Scene animate={!prefersReducedMotion} />
             </Canvas>
+            )}
           </div>
         </div>
       </div>

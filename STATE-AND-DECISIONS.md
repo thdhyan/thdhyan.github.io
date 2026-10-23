@@ -74,6 +74,14 @@
 - **STILL TODO**: hero→cards scroll choreography (decision 4, 2nd pass); optional: renders for the 5 cards without a robot.
 - `docs/` rebuilt from this work 2026-09-23 via `npm run deploy`.
 
+## Animated hero + timeline + flip cards (branch `hero-animation`, worktree `../Portfolio-anim`)
+- **Prod fleet now = `public/models/<id>.urdf` + `<id>.glb` pack** (Draco, one node per mesh file, keyed by basename). `src/urdf.js` loads the URDF with urdf-loader and pulls meshes from the pack (`makePackedMeshCb`), so joints stay animatable in prod. Build with `python3 tools/urdf2pack.py` then `npx -y @gltf-transform/cli draco build/pack/<n>.glb public/models/<n>.glb --method edgebreaker` and copy the `.urdf`. Replaces the pose-baked `urdf2glb.py` output. 6 robots: g1, k1, go2, spot, microduck, openduck (the two ducks are in `LAYOUT.fleet`, next to the hero).
+- **Trajectories**: `src/trajectories.js` — joint-delta keyframes over the layout pose, periodic Catmull-Rom, per-robot `phase`. Values are visually tuned only for g1 wave; tweak by eye. Dev: freeze with `window.__trajT = <sec>`.
+- **Grounding/flare** in `Scene.jsx`: shader floor disc (grid, rings, sonar pulse), shadow-map catcher + ContactShadows, footprint rings, glow sprite, orbiting light, Sparkles. `Canvas shadows` in `Hero.jsx`.
+- **About timeline**: Gantt lanes (Academia / Work / Projects) on one month axis; new role Graduate Research Assistant, UMN, Jun 2026 – Present (assumed "summer 2026" = Jun). Below 768px a text list shows under the scrollable chart.
+- **Projects**: cards flip (click/Enter/Space) to show full desc + tags; grid is 1 column below 1100px. `llmnav.png` re-rendered from the hero scene (go2 on floor ring).
+- `tools/prodcheck.mjs` updated to 6 robots. `tools/rendercards.mjs` still stale (see above).
+
 ## Environment notes
 - Dev server: `npm run dev` → http://localhost:5173 (start in background if needed; old shell handles die between turns).
 - Headless Playwright on this box runs rAF at ~1-2 fps (software GL) — never use fixed sleeps for animation settle; poll conditions (`waitForFunction` with `polling: 100`).
