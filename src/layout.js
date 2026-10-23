@@ -109,5 +109,24 @@ export const LAYOUT = {
         left_shoulder_yaw_joint: -1.638,
       },
     },
+    /* Duck companions standing beside the hero (actuated joints: see src/trajectories.js) */
+    {
+      id: 'microduck',
+      model: 'microduck',
+      pos: [0.35, 0, 2.55],
+      rotY: 0.5,
+      rot: [0, 0.5, 0],
+      scale: 2.2,
+      joints: {},
+    },
+    {
+      id: 'openduck',
+      model: 'openduck',
+      pos: [1.2, 0, 2.6],
+      rotY: -0.45,
+      rot: [0, -0.45, 0],
+      scale: 1.9,
+      joints: {},
+    },
   ],
 };

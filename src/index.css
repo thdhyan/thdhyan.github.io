@@ -252,6 +252,24 @@ p {
     linear-gradient(to bottom, transparent 58%, oklch(7.5% 0.010 255 / 0.16) 100%);
 }
 
+/* Portrait screens (phones, vertical monitors): copy on top, 3D stage below */
+@media (orientation: portrait) {
+  .hero {
+    align-items: start;
+    padding-top: 6.5rem;
+  }
+
+  .hero-stage-frame {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 54%;
+  }
+
+  .hero-scroll-hint { display: none !important; }
+}
+
 @media (max-width: 980px) {
   .hero {
     grid-template-columns: 1fr;
