@@ -116,11 +116,10 @@ const clamp1 = {
   overflow: 'hidden',
 };
 
-function ProjectCard({ p, compact }) {
+function CardFace({ p, compact }) {
   return (
     <div
-      id={`project-card-${p.id}`}
-      className="card"
+      className="card flip-face"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -190,8 +189,7 @@ function ProjectCard({ p, compact }) {
       </div>
 
       {!compact && (
-        <a
-          href="#"
+        <span
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -204,12 +202,62 @@ function ProjectCard({ p, compact }) {
             width: 'fit-content',
             marginTop: 'auto',
           }}
-          onMouseEnter={e => e.currentTarget.style.color = 'var(--rose-bright)'}
-          onMouseLeave={e => e.currentTarget.style.color = 'var(--rose-mid)'}
         >
-          View Details <ArrowUpRight size={14} weight="bold" />
-        </a>
+          Flip for details <ArrowUpRight size={14} weight="bold" />
+        </span>
       )}
+    </div>
+  );
+}
+
+/* Back of the card: full description + tags */
+function CardBack({ p, compact }) {
+  return (
+    <div
+      className="card flip-face flip-back"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.75rem',
+        padding: compact ? '0.875rem' : undefined,
+        height: '100%',
+        minHeight: 0,
+        boxSizing: 'border-box',
+        overflow: 'auto',
+      }}
+    >
+      <h3 style={{ fontSize: compact ? '0.9375rem' : '1.0625rem', color: 'var(--text-1)', lineHeight: 1.25 }}>{p.title}</h3>
+      <p style={{ fontSize: compact ? '0.8125rem' : '0.875rem', lineHeight: 1.65, color: 'var(--text-2)' }}>{p.desc}</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: 'auto' }}>
+        {p.tags.map(tag => (
+          <span key={tag} className="tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* Flippable card: click / Enter / Space toggles; both faces share one grid cell */
+function ProjectCard({ p, compact }) {
+  const [flipped, setFlipped] = useState(false);
+  const toggle = () => setFlipped((f) => !f);
+  return (
+    <div
+      id={`project-card-${p.id}`}
+      className={`flip${flipped ? ' is-flipped' : ''}`}
+      role="button"
+      tabIndex={0}
+      aria-pressed={flipped}
+      aria-label={`${p.title} — ${flipped ? 'show summary' : 'show details'}`}
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      }}
+    >
+      <div className="flip-inner">
+        <CardFace p={p} compact={compact} />
+        <CardBack p={p} compact={compact} />
+      </div>
     </div>
   );
 }
@@ -411,11 +459,7 @@ export function Projects() {
         <span className="eyebrow">Featured Work</span>
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '3rem' }}>Projects</h2>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))',
-          gap: '1.25rem',
-        }}>
+        <div className="proj-grid">
           {PROJECTS.map((project) => (
             <ProjectCard key={project.id} p={project} />
           ))}

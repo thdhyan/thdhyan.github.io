@@ -79,8 +79,8 @@ p {
 .section {
   position: relative;
   width: 100vw;
-  min-height: 100dvh;
-  padding: 8rem 5vw;
+  min-height: min(100dvh, 60rem);
+  padding: clamp(5rem, 9vh, 8rem) 5vw;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -110,7 +110,7 @@ p {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100dvh;
+  height: min(100dvh, 62rem);
 }
 
 .hero-stage-frame {
@@ -257,14 +257,17 @@ p {
   .hero {
     align-items: start;
     padding-top: 6.5rem;
+    min-height: min(100dvh, 62rem) !important; /* tall monitors: don't stretch the hero, keep projects close */
   }
+
+  .hero-stage-sticky { height: 100%; }
 
   .hero-stage-frame {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 54%;
+    height: 68%;
   }
 
   .hero-scroll-hint { display: none !important; }
@@ -282,7 +285,7 @@ p {
   .hero-stage-sticky {
     position: sticky;
     top: 0;
-    height: 100dvh;
+    height: min(100dvh, 62rem);
   }
 
   .hero-stage-frame {
@@ -592,6 +595,53 @@ p {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--charcoal-hi); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--rose-deep); }
+
+/* ── About timeline (Gantt lanes) ───────────────────────── */
+.tl { margin-top: 3rem; text-align: left; }
+.tl-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
+.tl-inner { min-width: 680px; position: relative; padding-left: 5.5rem; }
+.tl-axis { position: relative; height: 1.5rem; margin-bottom: 0.25rem; }
+.tl-year { position: absolute; font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--text-3); transform: translateX(2px); }
+.tl-lane { position: relative; margin-bottom: 0.75rem; }
+.tl-lane-name { position: absolute; left: -5.5rem; top: 0.5rem; font-family: 'Sora', sans-serif; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-mid); }
+.tl-track { position: relative; border-radius: var(--radius-md); background: var(--bg-card); border: 1px solid var(--rose-border); }
+.tl-gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rose-border); opacity: 0.6; }
+.tl-bar { position: absolute; height: 2rem; margin-top: 0.25rem; padding: 0 0.6rem; border-radius: 0.5rem; display: flex; align-items: center; overflow: hidden; font-size: 0.6875rem; font-weight: 600; white-space: nowrap; color: var(--text-1); background: var(--charcoal-hi); border: 1px solid var(--rose-border-hi); transition: transform 0.2s, box-shadow 0.2s; }
+.tl-bar:hover, .tl-bar:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 18px oklch(72% 0.15 286 / 0.25); overflow: visible; z-index: 2; outline: none; }
+.tl-academia { background: oklch(32% 0.07 286); border-color: var(--rose-border); }
+.tl-work { background: var(--rose-accent); border-color: transparent; }
+.tl-now { background: linear-gradient(90deg, var(--rose-accent), oklch(72% 0.15 286)); box-shadow: 0 0 14px oklch(72% 0.15 286 / 0.5); }
+.tl-projects { background: var(--rose-deep); padding: 0; overflow: visible; font-weight: 500; color: var(--text-2); }
+.tl-projects span { position: absolute; left: calc(100% + 6px); }
+.tl-projects.tl-in span { left: 0.6rem; color: var(--text-1); }
+.tl-projects.tl-left span { left: auto; right: calc(100% + 6px); }
+.tl-now { overflow: visible; justify-content: flex-end; }
+.tl-now span { position: absolute; right: 0.6rem; }
+.tl-list { margin-top: 1rem; list-style: none; display: none; }
+.tl-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--rose-border); font-size: 0.8125rem; color: var(--text-2); }
+.tl-list strong { color: var(--text-1); }
+.tl-list span { display: block; color: var(--text-3); font-size: 0.75rem; }
+@media (max-width: 768px) {
+  .tl-list { display: block; }
+}
+
+/* ── Flippable project cards ─────────────────────────────── */
+.proj-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 1100px) {
+  .proj-grid { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+}
+.flip { perspective: 1200px; cursor: pointer; height: 100%; border-radius: var(--radius-lg); outline: none; }
+.flip:focus-visible { box-shadow: 0 0 0 2px var(--rose-mid); }
+.flip-inner { display: grid; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-back { transform: rotateY(180deg); }
+/* .card:hover lifts via transform, which would undo the flip rotation */
+.flip-face.card:hover { transform: none; }
+.flip-back.card:hover { transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; }
+}
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {

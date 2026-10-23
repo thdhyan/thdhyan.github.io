@@ -1,4 +1,4 @@
-/* Production fallback check — the fleet must load from /models/*.glb with
+/* Production fallback check — the fleet must load from /models/*.urdf + *.glb packs with
    zero /models-raw requests (that dir is dev-only and 404s on GitHub Pages).
    Start a preview first:  npm run preview   (http://localhost:4173)
    Run: node tools/prodcheck.mjs */
@@ -6,7 +6,7 @@ import { chromium } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
 const BASE = process.env.BASE || 'http://localhost:4173';
-const FLEET = ['g1', 'k1', 'go2', 'spot'];
+const FLEET = ['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck'];
 
 mkdirSync('logs', { recursive: true });
 const browser = await chromium.launch();
@@ -31,9 +31,9 @@ await page.waitForFunction(() => {
   return m && !l && getComputedStyle(m).opacity === '1';
 }, undefined, { polling: 250, timeout: 45000 });
 
-/* all 4 fleet robots fully loaded + draco-decoded (promise resolves post-decode) */
+/* all 6 fleet robots fully loaded + draco-decoded (promise resolves post-decode) */
 await page.waitForFunction(async () => {
-  if (!window.__fleet || window.__fleet.size < 4) return false;
+  if (!window.__fleet || window.__fleet.size < 6) return false;
   try {
     await Promise.all([...window.__fleet.values()]);
     return true;
@@ -42,7 +42,7 @@ await page.waitForFunction(async () => {
   }
 }, undefined, { polling: 200, timeout: 40000 }).catch(() => {});
 const fleetOk = await page.evaluate(async () => {
-  if (!window.__fleet || window.__fleet.size < 4) return false;
+  if (!window.__fleet || window.__fleet.size < 6) return false;
   try {
     await Promise.all([...window.__fleet.values()]);
     return true;
@@ -50,10 +50,10 @@ const fleetOk = await page.evaluate(async () => {
     return false;
   }
 });
-ok(fleetOk, `fleet loaded + decoded (${await page.evaluate(() => window.__fleet?.size ?? 0)}/4 promises resolved)`);
+ok(fleetOk, `fleet loaded + decoded (${await page.evaluate(() => window.__fleet?.size ?? 0)}/6 promises resolved)`);
 
 const fleetResp = FLEET.filter((id) => resp.get(`/models/${id}.glb`) === 200);
-ok(fleetResp.length === 4, `all 4 fleet GLBs served 200 (${fleetResp.length}/4)`);
+ok(fleetResp.length === FLEET.length, `all ${FLEET.length} fleet GLB packs served 200 (${fleetResp.length}/${FLEET.length})`);
 ok(resp.get('/models/hero-robot.glb') === 200, 'hero-robot.glb 200');
 ok(resp.get('/models/drone.glb') === 200, 'drone.glb 200');
 const raw = [...resp.keys()].filter((p) => p.startsWith('/models-raw'));
