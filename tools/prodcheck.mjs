@@ -33,7 +33,7 @@ await page.waitForFunction(() => {
 
 /* all 6 fleet robots fully loaded + draco-decoded (promise resolves post-decode) */
 await page.waitForFunction(async () => {
-  if (!window.__fleet || window.__fleet.size < 6) return false;
+  if (!window.__fleet || window.__fleet.size < 9) return false;
   try {
     await Promise.all([...window.__fleet.values()]);
     return true;
@@ -42,7 +42,7 @@ await page.waitForFunction(async () => {
   }
 }, undefined, { polling: 200, timeout: 40000 }).catch(() => {});
 const fleetOk = await page.evaluate(async () => {
-  if (!window.__fleet || window.__fleet.size < 6) return false;
+  if (!window.__fleet || window.__fleet.size < 9) return false;
   try {
     await Promise.all([...window.__fleet.values()]);
     return true;

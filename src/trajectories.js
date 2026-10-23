@@ -98,6 +98,40 @@ export const TRAJ = {
       { t: 4.2,  d: {} },
     ],
   },
+
+  /* Nova Carter: gentle rock on its drive wheels with caster swing */
+  'nova-carter': {
+    period: 7, phase: 0.8,
+    keys: [
+      { t: 0,   d: {} },
+      { t: 1.75, d: { joint_wheel_left: 0.8, joint_wheel_right: 0.8, joint_swing_left: 0.15, joint_swing_right: 0.15 } },
+      { t: 3.5, d: {} },
+      { t: 5.25, d: { joint_wheel_left: -0.8, joint_wheel_right: -0.8, joint_swing_left: -0.15, joint_swing_right: -0.15 } },
+    ],
+  },
+
+  /* LoCoBot: reach out, open the gripper, pull back */
+  locobot: {
+    period: 8, phase: 3,
+    keys: [
+      { t: 0,   d: {} },
+      { t: 2,   d: { waist: 0.7, shoulder: 0.35, elbow: -0.4, wrist_angle: 0.3, left_finger: 0.015, right_finger: -0.015 } },
+      { t: 4,   d: { waist: 0.7, shoulder: 0.5, elbow: -0.2, wrist_angle: 0.5, left_finger: 0, right_finger: 0 } },
+      { t: 6,   d: { waist: -0.6, shoulder: 0.2, elbow: -0.3, wrist_rotate: 0.8 } },
+    ],
+  },
+
+  /* XLeRobot-style SO-101: pan to a target, dip, grab, sweep back */
+  so100: {
+    period: 9, phase: 0.4,
+    keys: [
+      { t: 0,   d: {} },
+      { t: 2,   d: { Rotation: 0.7, Pitch: 0.4, Elbow: 0.3, Wrist_Pitch: -0.3, Jaw: 0.8 } },
+      { t: 3.5, d: { Rotation: 0.7, Pitch: 0.7, Elbow: 0.5, Wrist_Pitch: -0.4, Jaw: 0 } },
+      { t: 5.5, d: { Rotation: -0.5, Pitch: 0.2, Elbow: 0.1, Wrist_Roll: 0.8, Jaw: 0.3 } },
+      { t: 7.5, d: { Rotation: -0.2, Pitch: 0.1, Wrist_Roll: -0.4 } },
+    ],
+  },
 };
 
 /* Periodic Catmull-Rom through the key values of one joint. */

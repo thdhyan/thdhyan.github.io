@@ -55,13 +55,50 @@ function PadRing({ radius }) {
   );
 }
 
-function FleetRobot({ id, pos, scale, rot, rotY, joints, animate }) {
+/* XLeRobot-style base for the SO-101 arm: low chassis on three omni wheels,
+   a short column and a top plate the arm sits on. Returns the plate height. */
+const XLE_TOP = 0.46;
+function XleBase({ animate }) {
+  const wheels = useRef([]);
+  useFrame((state) => {
+    if (!animate) return;
+    wheels.current.forEach((w) => { if (w) w.rotation.z = state.clock.elapsedTime * 1.2; });
+  });
+  const dark = { color: '#1d1b26', roughness: 0.6, metalness: 0.3 };
+  const white = { color: '#d9d7e4', roughness: 0.45, metalness: 0.1 };
+  return (
+    <group>
+      <mesh position={[0, 0.13, 0]}><cylinderGeometry args={[0.2, 0.2, 0.1, 6]} /><meshStandardMaterial {...dark} /></mesh>
+      {[0, 1, 2].map((k) => {
+        const a = (k * Math.PI * 2) / 3;
+        return (
+          <group key={k} position={[Math.cos(a) * 0.19, 0.065, Math.sin(a) * 0.19]} rotation={[0, -a, 0]}>
+            <mesh ref={(m) => { wheels.current[k] = m; }} rotation={[Math.PI / 2, 0, 0]}>
+              <cylinderGeometry args={[0.065, 0.065, 0.05, 20]} />
+              <meshStandardMaterial color="#2b2936" roughness={0.8} />
+            </mesh>
+          </group>
+        );
+      })}
+      <mesh position={[0, 0.3, 0]}><cylinderGeometry args={[0.045, 0.06, 0.3, 16]} /><meshStandardMaterial {...white} /></mesh>
+      <mesh position={[0, XLE_TOP - 0.02, 0]}><boxGeometry args={[0.2, 0.04, 0.16]} /><meshStandardMaterial {...white} /></mesh>
+    </group>
+  );
+}
+
+function FleetRobot({ id, base, pos, scale, rot, rotY, joints, animate }) {
   const robot = useFleetRobot(id, joints);
 
   // robots cast real shadows onto the floor
   useEffect(() => {
     robot?.traverse((o) => { if (o.isMesh) o.castShadow = true; });
   }, [robot]);
+
+  // the arm's base link sits on the plate: undo the loader's bbox centering in x/z
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability -- three.js object mutation, not React state
+    if (base === 'xle' && robot) robot.position.set(0, robot.position.y, 0);
+  }, [robot, base]);
 
   useFrame((state) => {
     const traj = TRAJ[id];
@@ -72,7 +109,12 @@ function FleetRobot({ id, pos, scale, rot, rotY, joints, animate }) {
   if (!robot) return null;
   return (
     <group position={pos} rotation={rot ?? [0, rotY, 0]} scale={scale}>
-      <primitive object={robot} />
+      {base === 'xle' ? (
+        <>
+          <XleBase animate={animate} />
+          <group position={[0, XLE_TOP, 0]}><primitive object={robot} /></group>
+        </>
+      ) : <primitive object={robot} />}
       <PadRing radius={0.5} />
     </group>
   );

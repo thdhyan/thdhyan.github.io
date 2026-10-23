@@ -88,3 +88,10 @@
 - Memory files also live in `memory/project_state.md` (palette/deploy details).
 - Old plain-HTML site removed from tree but in git history.
 - Fleet conversion may take minutes (Nova Carter 153 MB OBJ) — run in background.
+
+## Fleet expansion + layout pass (2026-10-23)
+- Fleet: go2, spot, k1, g1, microduck, openduck, nova-carter, locobot, so100 (XLeRobot-style: procedural `XleBase` in Scene.jsx + SO-101 arm; one arm only since `useFleetRobot` caches per id).
+- `tools/urdf2pack.py` (gitignored) loads mesh files directly with node transforms, keeps URDF `scale`, skips decimation for textured meshes. Rebuild: `python3 tools/urdf2pack.py <ids>`, then draco + copy .urdf to public/models.
+- Ducks/locobot face the camera (rotY ≈ -1.15…-1.9; robot forward is +X).
+- Section order: Publications before Skills. Projects strip pulled up (marginTop -5rem, flex-start) to close the gap under the timeline.
+- Hero/sections capped at ~60–62rem so tall monitors don't push content far down.

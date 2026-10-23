@@ -372,7 +372,7 @@ export function Projects() {
 
   if (strip) {
     return (
-      <section className="section" id="projects" style={{ padding: 0, display: 'block', minHeight: 'auto' }}>
+      <section className="section" id="projects" style={{ padding: 0, display: 'block', minHeight: 'auto', marginTop: '-5rem' }}>
         <div ref={wrapRef} data-projects="wrap" style={{ height: '320vh' }}>
           <div style={{
             position: 'sticky',
@@ -381,7 +381,7 @@ export function Projects() {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             gap: '1rem',
             paddingTop: '5.5rem',
             boxSizing: 'border-box',
@@ -433,7 +433,7 @@ export function Projects() {
                   width: 'max-content',
                   boxSizing: 'border-box',
                   paddingInline: 'max(5vw, calc((100vw - 80rem) / 2))',
-                  height: 'clamp(400px, calc(100vh - 258px), 700px)',
+                  height: 'clamp(400px, calc(100vh - 258px), 1000px)',
                   willChange: 'transform',
                 }}
               >
