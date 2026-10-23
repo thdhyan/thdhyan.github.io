@@ -283,14 +283,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="base_link.stl"/>
+        <mesh filename="base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="base_link.stl"/>
+        <mesh filename="base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -303,14 +303,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.001 -0.4505 -0.0475"/>
       <geometry>
-        <mesh filename="link4.stl"/>
+        <mesh filename="link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.001 -0.4505 -0.0475"/>
       <geometry>
-        <mesh filename="link4.stl"/>
+        <mesh filename="link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -323,14 +323,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0085 -0.77959 -0.0475"/>
       <geometry>
-        <mesh filename="gripper.stl"/>
+        <mesh filename="gripper.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0085 -0.77959 -0.0475"/>
       <geometry>
-        <mesh filename="gripper.stl"/>
+        <mesh filename="gripper.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -343,14 +343,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.87709 -0.823505 -0.0185"/>
       <geometry>
-        <mesh filename="finger.stl"/>
+        <mesh filename="finger.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.87709 -0.823505 -0.0185"/>
       <geometry>
-        <mesh filename="finger.stl"/>
+        <mesh filename="finger.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -363,14 +363,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.015 -0.0 -0.115"/>
       <geometry>
-        <mesh filename="link2.stl"/>
+        <mesh filename="link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.015 -0.0 -0.115"/>
       <geometry>
-        <mesh filename="link2.stl"/>
+        <mesh filename="link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -383,14 +383,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.065"/>
       <geometry>
-        <mesh filename="link1.stl"/>
+        <mesh filename="link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.065"/>
       <geometry>
-        <mesh filename="link1.stl"/>
+        <mesh filename="link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -403,14 +403,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.0485 -0.69859 -0.0475"/>
       <geometry>
-        <mesh filename="wrist.stl"/>
+        <mesh filename="wrist.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0485 -0.69859 -0.0475"/>
       <geometry>
-        <mesh filename="wrist.stl"/>
+        <mesh filename="wrist.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -423,14 +423,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.017 -0.3125 -0.115"/>
       <geometry>
-        <mesh filename="link3.stl"/>
+        <mesh filename="link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.017 -0.3125 -0.115"/>
       <geometry>
-        <mesh filename="link3.stl"/>
+        <mesh filename="link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>

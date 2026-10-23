@@ -79,8 +79,8 @@ p {
 .section {
   position: relative;
   width: 100vw;
-  min-height: 100dvh;
-  padding: 8rem 5vw;
+  min-height: min(100dvh, 60rem);
+  padding: clamp(5rem, 9vh, 8rem) 5vw;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -110,7 +110,7 @@ p {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100dvh;
+  height: min(100dvh, 62rem);
 }
 
 .hero-stage-frame {
@@ -257,14 +257,17 @@ p {
   .hero {
     align-items: start;
     padding-top: 6.5rem;
+    min-height: min(100dvh, 62rem) !important; /* tall monitors: don't stretch the hero, keep projects close */
   }
+
+  .hero-stage-sticky { height: 100%; }
 
   .hero-stage-frame {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 54%;
+    height: 68%;
   }
 
   .hero-scroll-hint { display: none !important; }
@@ -282,7 +285,7 @@ p {
   .hero-stage-sticky {
     position: sticky;
     top: 0;
-    height: 100dvh;
+    height: min(100dvh, 62rem);
   }
 
   .hero-stage-frame {

@@ -36,6 +36,9 @@ export const FLEET_URDFS = {
 };
 
 const PROD = !import.meta.env.DEV;
+/* Robots with a packed URDF+GLB in public/models load that way in dev too, so
+   dev matches production (colors/overrides baked by tools/urdf2pack.py). */
+const PACKED = new Set(['g1', 'k1', 'go2', 'spot', 'microduck', 'openduck', 'nova-carter', 'so100']);
 console.info('[fleet] init PROD=', PROD);
 
 /* OBJ (nova-carter) needs MTL for colors; STL/DAE use urdf-loader's built-ins.
@@ -178,6 +181,17 @@ function loadPack(id) {
       (gltf) => {
         const nodes = new Map();
         gltf.scene.traverse((o) => { if (o.name) nodes.set(o.name, o); });
+        /* multi-material meshes export as foo, foo_1, foo_2 — regroup under foo */
+        const parts = new Map();
+        for (const [name, node] of nodes) {
+          const m = /^(.+)_(\d+)$/.exec(name);
+          if (m && nodes.has(m[1])) parts.set(m[1], [...(parts.get(m[1]) ?? []), node]);
+        }
+        for (const [base, extra] of parts) {
+          const g = new THREE.Group();
+          g.add(nodes.get(base).clone(), ...extra.map((n) => n.clone()));
+          nodes.set(base, g);
+        }
         console.info('[fleet] pack decoded', id);
         resolve(nodes);
       },
@@ -192,11 +206,12 @@ function loadUrdfRobot(id, cfg) {
     const manager = new THREE.LoadingManager();
     manager.onLoad = () => resolve(finishRobot(robot));
     const loader = new URDFLoader(manager);
-    if (cfg.packages && !PROD) loader.packages = cfg.packages;
-    loader.loadMeshCb = PROD ? makePackedMeshCb(loadPack(id)) : makeMeshCb();
+    const packed = PROD || PACKED.has(id);
+    if (cfg.packages && !packed) loader.packages = cfg.packages;
+    loader.loadMeshCb = packed ? makePackedMeshCb(loadPack(id)) : makeMeshCb();
     let robot = null;
     loader.load(
-      PROD ? `/models/${id}.urdf` : cfg.url,
+      packed ? `/models/${id}.urdf` : cfg.url,
       (model) => { robot = model; },
       undefined,
       (err) => reject(err),

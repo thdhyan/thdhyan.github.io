@@ -10,18 +10,27 @@ const trot = (a, b) => ({
   FR_thigh_joint: a, FL_thigh_joint: b, RR_thigh_joint: b, RL_thigh_joint: a,
 });
 
+/* G1 wave pose, as deltas over the layout rest pose (arm down, elbow slightly bent) */
+const raise = { right_shoulder_pitch_joint: -2.0 };
+const waveHi = { right_shoulder_roll_joint: -0.55, right_elbow_joint: 0.4, right_wrist_roll_joint: 0.4 };
+const waveLo = { right_shoulder_roll_joint: -0.2, right_elbow_joint: -0.2, right_wrist_roll_joint: -0.4 };
+
 export const TRAJ = {
-  /* G1: right-arm wave with waist sway, then a relaxed arm swing */
+  /* G1: a greeting. Arm lifts overhead, waves three times (shoulder roll +
+     elbow + wrist in phase), lowers; body sways with it, left arm counters. */
   g1: {
-    period: 9, phase: 0,
+    period: 10, phase: 0,
     keys: [
-      { t: 0,   d: {} },
-      { t: 1.5, d: { right_shoulder_pitch_joint: -1.5, right_shoulder_roll_joint: -0.5, right_elbow_joint: -0.9, waist_yaw_joint: -0.2 } },
-      { t: 2.25, d: { right_shoulder_pitch_joint: -1.5, right_shoulder_roll_joint: -0.5, right_elbow_joint: -0.3, right_wrist_yaw_joint: 0.5, waist_yaw_joint: -0.2 } },
-      { t: 3,   d: { right_shoulder_pitch_joint: -1.5, right_shoulder_roll_joint: -0.5, right_elbow_joint: -0.9, right_wrist_yaw_joint: -0.5, waist_yaw_joint: -0.1 } },
-      { t: 3.75, d: { right_shoulder_pitch_joint: -1.5, right_shoulder_roll_joint: -0.5, right_elbow_joint: -0.3, right_wrist_yaw_joint: 0.5, waist_yaw_joint: 0 } },
-      { t: 5,   d: { left_shoulder_pitch_joint: -0.5, left_elbow_joint: 0.6, waist_yaw_joint: 0.25 } },
-      { t: 7,   d: { left_shoulder_pitch_joint: 0.3, left_elbow_joint: 0.2, right_shoulder_pitch_joint: -0.3, waist_yaw_joint: -0.15 } },
+      { t: 0,    d: {} },
+      { t: 1.2,  d: { ...raise, ...waveHi, waist_yaw_joint: -0.12, left_shoulder_pitch_joint: -0.1 } },
+      { t: 1.9,  d: { ...raise, ...waveLo, waist_yaw_joint: -0.12 } },
+      { t: 2.6,  d: { ...raise, ...waveHi, waist_yaw_joint: -0.1 } },
+      { t: 3.3,  d: { ...raise, ...waveLo, waist_yaw_joint: -0.1 } },
+      { t: 4.0,  d: { ...raise, ...waveHi, waist_yaw_joint: -0.08 } },
+      { t: 4.7,  d: { ...raise, ...waveLo, waist_yaw_joint: -0.05 } },
+      { t: 5.8,  d: { waist_yaw_joint: 0.05 } },
+      { t: 7.5,  d: { waist_roll_joint: 0.06, left_shoulder_pitch_joint: -0.15, right_shoulder_pitch_joint: 0.1 } },
+      { t: 8.8,  d: { waist_roll_joint: -0.04 } },
     ],
   },
 

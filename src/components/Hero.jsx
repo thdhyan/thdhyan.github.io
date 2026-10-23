@@ -50,7 +50,7 @@ const webglOk = typeof document !== 'undefined' && hasWebGL();
 
 export function Hero() {
   return (
-    <section className="section hero" id="home" style={{ minHeight: '100dvh' }}>
+    <section className="section hero" id="home" style={{ minHeight: 'min(100dvh, 62rem)' }}>
       <div className="hero-copy" style={{ zIndex: 10, maxWidth: '42rem' }}>
 
         <span className="eyebrow">Robotics Engineer · MS Robotics @ UMN</span>

@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useMemo, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, ContactShadows, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 import { useFleetRobot } from '../urdf';
@@ -197,16 +197,20 @@ function OrbitLight({ animate }) {
     const t = state.clock.elapsedTime * 0.35;
     light.current.position.set(0.9 + Math.cos(t) * 5, 1.4 + Math.sin(t * 1.7) * 0.5, 1.4 + Math.sin(t) * 3.5);
   });
-  return <pointLight ref={light} position={[5, 1.4, 1.4]} intensity={2.2} color="#9C8CFF" distance={11} decay={1.6} />;
+  return <pointLight ref={light} position={[5, 1.4, 1.4]} intensity={1.3} color="#9C8CFF" distance={11} decay={1.6} />;
 }
 
 export function Scene({ animate = true }) {
+  const invalidate = useThree((st) => st.invalidate);
+  useEffect(() => {
+    if (import.meta.env.DEV) window.__invalidate = invalidate; // pose/shot tools force a redraw under frameloop=demand
+  }, [invalidate]);
   return (
     <group>
-      <ambientLight intensity={1.1} color="#F8EFEF" />
+      <ambientLight intensity={0.5} color="#E9E4F5" />
       <directionalLight
         position={[5, 8, 5]}
-        intensity={1.5}
+        intensity={1.15}
         color="#F8EFEF"
         castShadow
         shadow-mapSize={[2048, 2048]}
@@ -219,13 +223,13 @@ export function Scene({ animate = true }) {
         shadow-bias={-0.0004}
         shadow-normalBias={0.02}
       />
-      <directionalLight position={[-3, 6, 4]}  intensity={0.8} color="#C9C2FF" />
-      <directionalLight position={[0, 3, 10]}  intensity={0.6} color="#F8EFEF" />
+      <directionalLight position={[-3, 6, 4]}  intensity={0.4} color="#C9C2FF" />
+      <directionalLight position={[0, 3, 10]}  intensity={0.25} color="#F8EFEF" />
       {/* back/rim light — separates robots from the dark backdrop */}
-      <directionalLight position={[-2, 5, -7]} intensity={1.3} color="#C9C2FF" />
-      <pointLight position={[-4, 2, 3]}  intensity={1.1} color="#6B59D0" distance={18} />
-      <pointLight position={[4, -1, 3]}  intensity={0.8} color="#6D694D" distance={14} />
-      <pointLight position={[0, 5, 5]}   intensity={0.6} color="#6B59D0" distance={14} />
+      <directionalLight position={[-2, 5, -7]} intensity={1.5} color="#B7AEFF" />
+      <pointLight position={[-4, 2, 3]}  intensity={0.6} color="#6B59D0" distance={18} />
+      <pointLight position={[4, -1, 3]}  intensity={0.35} color="#6D694D" distance={14} />
+      <pointLight position={[0, 5, 5]}   intensity={0.3} color="#6B59D0" distance={14} />
 
       <GroundPlane animate={animate} />
       <ShadowCatcher />
