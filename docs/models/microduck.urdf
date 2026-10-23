@@ -39,28 +39,28 @@
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="-0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="sole_left.stl"/>
+        <mesh filename="sole_left.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_yellow"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="-0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="foot_left.stl"/>
+        <mesh filename="foot_left.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 3.141593" xyz="0.0 0.0 -0.0322"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration_default.stl"/>
+        <mesh filename="seeed_bearing__configuration_default.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="-0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="ankle_left.stl"/>
+        <mesh filename="ankle_left.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
@@ -75,14 +75,14 @@
     <visual>
       <origin rpy="1.570796 1.570796 0.000000" xyz="-0.022 0.0357771 0.0385"/>
       <geometry>
-        <mesh filename="leg.stl"/>
+        <mesh filename="leg.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="0.0 0.042 -0.0115"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
@@ -97,35 +97,35 @@
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="-0.0 -0.0 -0.0425"/>
       <geometry>
-        <mesh filename="upper_leg_left.stl"/>
+        <mesh filename="upper_leg_left.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="-3.141593 -1.570796 0.000000" xyz="0.022 0.0357771 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="0.0 -0.0 -0.0425"/>
       <geometry>
-        <mesh filename="upper_leg_rigidity_plate.stl"/>
+        <mesh filename="upper_leg_rigidity_plate.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 3.141593" xyz="0.022 0.0357771 -0.004"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="1.570796 -1.570796 0.000000" xyz="-0.0 -0.0 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
@@ -140,14 +140,14 @@
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="0.021 0.0 -0.0185"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 0.000000 0.000000" xyz="-0.0175 0.0 -0.0185"/>
       <geometry>
-        <mesh filename="hip_l.stl"/>
+        <mesh filename="hip_l.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
@@ -162,28 +162,28 @@
     <visual>
       <origin rpy="3.141593 0.000000 0.000000" xyz="-0.0175 -0.002 0.0125"/>
       <geometry>
-        <mesh filename="yaw2roll.stl"/>
+        <mesh filename="yaw2roll.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-3.141593 0.000000 -1.570796" xyz="-0.0 0.0 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="1.570796 1.570796 0.000000" xyz="-0.0 0.0165 0.0125"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-3.141593 0.000000 0.000000" xyz="-0.0175 -0.002 0.0125"/>
       <geometry>
-        <mesh filename="bearing_roll.stl"/>
+        <mesh filename="bearing_roll.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
@@ -198,98 +198,98 @@
     <visual>
       <origin rpy="-1.570796 0.000000 -1.570796" xyz="0.0155 -9.13778e-05 -0.05548"/>
       <geometry>
-        <mesh filename="lens.stl"/>
+        <mesh filename="lens.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_lens"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0045 -9.13778e-05 -0.0178"/>
       <geometry>
-        <mesh filename="face_part.stl"/>
+        <mesh filename="face_part.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 -1.570796" xyz="0.003 0.0255 -0.018"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0045 0.0 -0.018"/>
       <geometry>
-        <mesh filename="motor_support.stl"/>
+        <mesh filename="motor_support.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0045 -0.0 -0.018"/>
       <geometry>
-        <mesh filename="top_head_shell.stl"/>
+        <mesh filename="top_head_shell.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="0.0 0.0 0.0145"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="0.0032 -0.04 -0.018"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration_default.stl"/>
+        <mesh filename="seeed_bearing__configuration_default.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 -1.570796" xyz="0.02694 0.0289936 -0.0519"/>
       <geometry>
-        <mesh filename="elec_rpi_robot_hat_pcb.stl"/>
+        <mesh filename="elec_rpi_robot_hat_pcb.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_pcb"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.00420071 1.7776e-08 -0.0180814"/>
       <geometry>
-        <mesh filename="soft_mouth_top.stl"/>
+        <mesh filename="soft_mouth_top.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_yellow"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0045 -9.13778e-05 -0.0178"/>
       <geometry>
-        <mesh filename="noenoeil.stl"/>
+        <mesh filename="noenoeil.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_yellow"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0043 -0.0 -0.018"/>
       <geometry>
-        <mesh filename="bottom_head_shell.stl"/>
+        <mesh filename="bottom_head_shell.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 0.000000 -1.570796" xyz="0.0155 -9.13778e-05 -0.05558"/>
       <geometry>
-        <mesh filename="m12_lens_holder.stl"/>
+        <mesh filename="m12_lens_holder.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 0.000000 1.570796" xyz="0.015435 -1.13778e-05 -0.06001"/>
       <geometry>
-        <mesh filename="pcb__raspberry_pi_zero_2_w.stl"/>
+        <mesh filename="pcb__raspberry_pi_zero_2_w.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_pcb"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="0.01 -0.016786 0.0260226"/>
       <geometry>
-        <mesh filename="speaker.stl"/>
+        <mesh filename="speaker.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
@@ -304,14 +304,14 @@
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0045 0.0 0.002"/>
       <geometry>
-        <mesh filename="jaw.stl"/>
+        <mesh filename="jaw.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 1.570796" xyz="-0.0046 0.0 0.002"/>
       <geometry>
-        <mesh filename="jaw_soft.stl"/>
+        <mesh filename="jaw_soft.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_yellow"/>
     </visual>
@@ -326,28 +326,28 @@
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.0 0.0 0.01"/>
       <geometry>
-        <mesh filename="yaw_roll_motion.stl"/>
+        <mesh filename="yaw_roll_motion.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="0.0 0.0 0.0145"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="-0.000000 -1.570796 0.000000" xyz="-0.016 0.0 0.0145"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-0.000000 -1.570796 0.000000" xyz="0.018 0.0 0.0145"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
@@ -362,14 +362,14 @@
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="-0.0 0.0287931 -0.0145"/>
       <geometry>
-        <mesh filename="neck_pitch.stl"/>
+        <mesh filename="neck_pitch.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 0.000000" xyz="-0.0 0.0207931 -0.0145"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
@@ -384,28 +384,28 @@
     <visual>
       <origin rpy="1.570796 1.570796 0.000000" xyz="0.022 0.05 0.028"/>
       <geometry>
-        <mesh filename="neck.stl"/>
+        <mesh filename="neck.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 -1.570796 0.000000" xyz="0.0 0.0 0.0145"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="1.570796 -1.570796 0.000000" xyz="0.0 -0.05 0.0145"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="1.570796 1.570796 0.000000" xyz="0.022 0.05 0.003"/>
       <geometry>
-        <mesh filename="neck.stl"/>
+        <mesh filename="neck.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
@@ -420,28 +420,28 @@
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="ankle_right.stl"/>
+        <mesh filename="ankle_right.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="sole_right.stl"/>
+        <mesh filename="sole_right.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_yellow"/>
     </visual>
     <visual>
       <origin rpy="3.141593 0.000000 0.000000" xyz="-0.0 0.0 -0.0292"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration_default.stl"/>
+        <mesh filename="seeed_bearing__configuration_default.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="0.022 0.00622291 -0.0647"/>
       <geometry>
-        <mesh filename="foot_right.stl"/>
+        <mesh filename="foot_right.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_orange"/>
     </visual>
@@ -456,14 +456,14 @@
     <visual>
       <origin rpy="-0.000000 -1.570796 0.000000" xyz="-0.042 0.0 -0.0115"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="0.000000 1.570796 0.000000" xyz="-0.0357771 -0.022 0.0385"/>
       <geometry>
-        <mesh filename="leg.stl"/>
+        <mesh filename="leg.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
@@ -478,35 +478,35 @@
     <visual>
       <origin rpy="-0.000000 -1.570796 0.000000" xyz="-0.022 0.0357771 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="3.141593 0.000000 0.000000" xyz="-0.022 0.0357771 0.0"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="0.0 0.0 0.0435"/>
       <geometry>
-        <mesh filename="upper_leg_rigidity_plate.stl"/>
+        <mesh filename="upper_leg_rigidity_plate.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-1.570796 1.570796 0.000000" xyz="-0.0 0.0 -0.0425"/>
       <geometry>
-        <mesh filename="upper_leg_right.stl"/>
+        <mesh filename="upper_leg_right.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="1.570796 -1.570796 0.000000" xyz="0.0 0.0 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
@@ -521,14 +521,14 @@
     <visual>
       <origin rpy="-1.570796 0.000000 0.000000" xyz="-0.0175 0.0 -0.0185"/>
       <geometry>
-        <mesh filename="hip_l.stl"/>
+        <mesh filename="hip_l.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="1.570796 0.000000 -1.570796" xyz="0.025 0.0 -0.0185"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
@@ -543,28 +543,28 @@
     <visual>
       <origin rpy="3.141593 0.000000 0.000000" xyz="-0.0175 -0.002 0.0125"/>
       <geometry>
-        <mesh filename="yaw2roll.stl"/>
+        <mesh filename="yaw2roll.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="-3.141593 0.000000 -1.570796" xyz="-0.0 0.0 0.0125"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="-3.141593 0.000000 0.000000" xyz="-0.0175 -0.002 0.0125"/>
       <geometry>
-        <mesh filename="bearing_roll.stl"/>
+        <mesh filename="bearing_roll.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="1.570796 1.570796 0.000000" xyz="-0.0 0.0165 0.0125"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
@@ -579,70 +579,70 @@
     <visual>
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.006 0.0175 -0.005"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.004 -0.0005 -0.0175"/>
       <geometry>
-        <mesh filename="right_shell.stl"/>
+        <mesh filename="right_shell.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.0042 -0.0 -0.0175215"/>
       <geometry>
-        <mesh filename="banana_pcb_locker.stl"/>
+        <mesh filename="banana_pcb_locker.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.004 -0.0 -0.0175"/>
       <geometry>
-        <mesh filename="trunk_base.stl"/>
+        <mesh filename="trunk_base.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="3.141593 -1.570796 0.000000" xyz="0.006 0.0175 0.0115"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.004 -0.0 -0.0175215"/>
       <geometry>
-        <mesh filename="power_support.stl"/>
+        <mesh filename="power_support.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_grey"/>
     </visual>
     <visual>
       <origin rpy="3.124139 0.000000 -1.570796" xyz="-0.0359693 0.0 -0.00385049"/>
       <geometry>
-        <mesh filename="np_f970.stl"/>
+        <mesh filename="np_f970.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_battery"/>
     </visual>
     <visual>
       <origin rpy="3.141593 -1.570796 0.000000" xyz="0.006 -0.0175 0.0115"/>
       <geometry>
-        <mesh filename="xl330.stl"/>
+        <mesh filename="xl330.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_motor"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 1.570796" xyz="0.004 -0.0 -0.0175785"/>
       <geometry>
-        <mesh filename="left_shell.stl"/>
+        <mesh filename="left_shell.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_cream"/>
     </visual>
     <visual>
       <origin rpy="0.000000 0.000000 0.000000" xyz="0.006 -0.0175 -0.005"/>
       <geometry>
-        <mesh filename="seeed_bearing__configuration__22x16x4.stl"/>
+        <mesh filename="seeed_bearing__configuration__22x16x4.stl" scale="1.0 1.0 1.0"/>
       </geometry>
       <material name="microduck_bearing"/>
     </visual>
